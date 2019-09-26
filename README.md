@@ -1,2 +1,9 @@
-# protect-the-dough
+# Protect the Dough
 
+This is the Readme for the project.
+
+Group decisions:
+* Frontend: [Angular](https://angular.io/)
+* Backend: Not sure yet
+    * [NodeJS](https://nodejs.org/en/)
+    * [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.0)
