@@ -2,7 +2,7 @@
 
 This is the Readme for the project.
 
-Group decisions:
+## Architecture
 * Frontend: [Angular](https://angular.io/)
 * Backend: Not sure yet
     * [NodeJS](https://nodejs.org/en/)
