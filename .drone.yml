@@ -7,6 +7,13 @@ steps:
   commands:
   - cd $${PREFIX} && npm install
   - npm --prefix /usr install -g @angular/cli
+  
+- name: linting
+  commands:
+  - npm run lint
+  
+- name: build
+  commands:
   - ng --version
   - ng build
   environment:
