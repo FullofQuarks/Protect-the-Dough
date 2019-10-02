@@ -17,7 +17,6 @@ steps:
   - npm --prefix $${PREFIX} run build
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
-    PATH: $${PREFIX}/node_modules/@angular/cli/bin:${PATH}
   
 trigger:
   branch:
