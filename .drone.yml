@@ -3,17 +3,27 @@ name: default
 
 steps:
 - name: install
-  image: node
+  image: node:12
   commands:
-  - npm --prefix $${PREFIX}/node_modules install $${PREFIX}
+  - cd $${PREFIX} && npm install
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+  
+- name: linting
+  image: node:12
+  commands:
+  - cd $${PREFIX}
+  - npm run lint
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 - name: build
-  image: node
+  image: node:12
   commands:
-  - npm install @angular/cli /drone/src
-  - /drone/src/ng build --prod $${PREFIX}
+  - cd $${PREFIX}
+  - npm --prefix /usr install -g @angular/cli
+  - ng --version
+  - ng build 2>&1 >/dev/null
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
