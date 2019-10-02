@@ -2,18 +2,17 @@ kind: pipeline
 name: default
 
 steps:
-- name: build
+- name: install
   image: node
   commands:
   - npm --prefix $${PREFIX}/node_modules install $${PREFIX}
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
-- name: test
+- name: build
   image: node
   commands:
-  - npm install
-  - npm test
+  - npm run ng build --prefix $${PREFIX}
   
 trigger:
   branch:
@@ -22,6 +21,3 @@ trigger:
     include:
     - push
     - pull_request
-
-environment:
-  DRONE_AGENT_ENV_FILE=/etc/drone/drone.yml
