@@ -7,15 +7,21 @@ steps:
   commands:
   - cd $${PREFIX} && npm install
   - npm --prefix /usr install -g @angular/cli
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 - name: linting
   image: node:12
   commands:
+  - cd $${PREFIX}
   - npm run lint
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 - name: build
   image: node:12
   commands:
+  - cd $${PREFIX}
   - ng --version
   - ng build
   environment:
