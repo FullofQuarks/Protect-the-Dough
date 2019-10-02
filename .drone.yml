@@ -1,0 +1,11 @@
+pipeline:                          
+  install:                         
+    image: node                    
+    commands:                      
+      - npm install -g @angular/cli
+      - npm install                
+  build:                           
+    image: node                    
+    commands:                      
+      - npm run lint               
+      - ng build                   
