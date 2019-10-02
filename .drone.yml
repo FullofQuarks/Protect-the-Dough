@@ -6,13 +6,14 @@ steps:
   image: node
   commands:
   - npm --prefix $${PREFIX}/node_modules install $${PREFIX}
+  - npm install -g @angular/cli
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 - name: build
   image: node
   commands:
-  - npm --prefix $${PREFIX} run ng build
+  - npm --prefix $${PREFIX} run build
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
