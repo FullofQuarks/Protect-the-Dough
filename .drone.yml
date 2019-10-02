@@ -12,7 +12,10 @@ steps:
 - name: build
   image: node
   commands:
-  - npm --prefix $${PREFIX} run ng build
+  - npm install -g @angular/cli
+  - $${PREFIX}/bin/ng build --prod
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 trigger:
   branch:
