@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj",
+    "projectUniqueName": "C:\\Users\\nsmith\\repos\\protect-the-dough\\Frontend\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj",
     "projectName": "ProtectTheDough.Web",
-    "projectPath": "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj",
-    "outputPath": "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\obj\\",
+    "projectPath": "C:\\Users\\nsmith\\repos\\protect-the-dough\\Frontend\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj",
+    "outputPath": "C:\\Users\\nsmith\\repos\\protect-the-dough\\Frontend\\ProtectTheDough.Web\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
