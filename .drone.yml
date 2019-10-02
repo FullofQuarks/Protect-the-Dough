@@ -6,14 +6,13 @@ steps:
   image: node
   commands:
   - npm --prefix $${PREFIX}/node_modules install $${PREFIX}
-  - npm install -g @angular/cli
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 - name: build
   image: node
   commands:
-  - export PATH=$${PREFIX}:${PATH}
+  - npm install -g @angular/cli
   - pushd $${PREFIX}
   - ng build
   - popd
