@@ -6,7 +6,6 @@ steps:
   image: node:12
   commands:
   - cd $${PREFIX} && npm install
-  - npm --prefix /usr install -g @angular/cli
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
@@ -22,6 +21,7 @@ steps:
   image: node:12
   commands:
   - cd $${PREFIX}
+  - npm --prefix /usr install -g @angular/cli
   - ng --version
   - ng build
   environment:
