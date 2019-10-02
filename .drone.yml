@@ -13,9 +13,7 @@ steps:
   image: node
   commands:
   - npm install -g @angular/cli
-  - pushd $${PREFIX}
-  - ng build
-  - popd
+  - npm --prefix $${PREFIX} run build
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
