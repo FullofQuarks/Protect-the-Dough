@@ -5,11 +5,21 @@ steps:
 - name: build
   image: node
   commands:
-  - npm install -g @angular/cli
-  - npm install
+  - npm --prefix ./ProtectTheDough.Web/ProtectTheDough.Web/ClientApp/node_modules install ./ProtectTheDough.Web/ProtectTheDough.Web/ClientApp
   
 - name: test
   image: node
   commands:
   - npm install
   - npm test
+  
+trigger:
+  branch:
+  - master
+  event:
+    include:
+    - push
+    - pull_request
+
+environment:
+  DRONE_AGENT_ENV_FILE=/etc/drone/drone.yml
