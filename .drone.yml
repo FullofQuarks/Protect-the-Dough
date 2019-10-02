@@ -14,7 +14,9 @@ steps:
   image: node
   commands:
   - export PATH=$${PREFIX}:${PATH}
-  - npm --prefix $${PREFIX} run build
+  - pushd $${PREFIX}
+  - ng build
+  - popd
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
