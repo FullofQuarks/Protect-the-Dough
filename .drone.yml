@@ -7,7 +7,6 @@ steps:
   commands:
   - npm --prefix $${PREFIX}/node_modules install $${PREFIX}
   - npm install -g @angular/cli
-  - echo npm prefix -g
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
@@ -17,6 +16,7 @@ steps:
   - npm --prefix $${PREFIX} run build
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+    PATH: $${PREFIX}/node_modules/@angular/cli/bin
   
 trigger:
   branch:
