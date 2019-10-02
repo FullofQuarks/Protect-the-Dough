@@ -13,6 +13,8 @@ steps:
   image: node
   commands:
   - npm --prefix $${PREFIX} run ng build
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 trigger:
   branch:
