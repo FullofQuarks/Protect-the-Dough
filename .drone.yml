@@ -1,7 +1,3 @@
-global-variables:
-  environment:
-    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
-
 kind: pipeline
 name: default
 
@@ -10,6 +6,8 @@ steps:
   image: node
   commands:
   - npm --prefix $${PREFIX}/node_modules install $${PREFIX}
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
 - name: test
   image: node
