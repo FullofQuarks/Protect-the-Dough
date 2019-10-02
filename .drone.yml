@@ -15,6 +15,7 @@ steps:
   - npm --prefix /usr/bin install -g @angular/cli
   - ls -al /
   - ng --version
+  - echo $PATH
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
