@@ -14,7 +14,7 @@ steps:
   commands:
   - npm install -g @angular/cli
   - ls -al $${PREFIX}/bin
-  - $${PREFIX}/bin/ng build $${PREFIX}
+  - $${PREFIX}/bin/ng --version
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
   
