@@ -1,4 +1,8 @@
-pipeline:                          
+kind: pipeline
+type: docker
+name: default
+
+steps:
   install:                         
     image: node                    
     commands:                      
@@ -6,6 +10,11 @@ pipeline:
       - npm install                
   build:                           
     image: node                    
-    commands:                      
-      - npm run lint               
-      - ng build                   
+    commands:
+      - npm audit fix
+      #- npm run lint               
+      #- ng build     
+
+trigger:
+  branch:
+    - master
