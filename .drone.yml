@@ -9,10 +9,12 @@ steps:
   - npm --prefix /usr install -g @angular/cli
   
 - name: linting
+  image: node:12
   commands:
   - npm run lint
   
 - name: build
+  image: node:12
   commands:
   - ng --version
   - ng build
