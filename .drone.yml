@@ -1,20 +1,15 @@
 kind: pipeline
-type: docker
 name: default
 
 steps:
-  install:                         
-    image: node                    
-    commands:                      
-      - npm install -g @angular/cli
-      - npm install                
-  build:                           
-    image: node                    
-    commands:
-      - npm audit fix
-      #- npm run lint               
-      #- ng build     
-
-trigger:
-  branch:
-    - master
+- name: build
+  image: node
+  commands:
+  - npm install -g @angular/cli
+  - npm install
+  
+- name: test
+  image: node
+  commands:
+  - npm install
+  - npm test
