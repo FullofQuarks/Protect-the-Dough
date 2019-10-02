@@ -12,7 +12,7 @@ steps:
 - name: build
   image: node
   commands:
-  - npm run ng build --prefix $${PREFIX}
+  - npm --prefix $${PREFIX} run ng build
   
 trigger:
   branch:
