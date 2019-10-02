@@ -12,7 +12,7 @@ steps:
 - name: build
   image: node:12
   commands:
-  - npm install -g @angular/cli
+  - npm --prefix /usr/bin install -g @angular/cli
   - ls -al /
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
