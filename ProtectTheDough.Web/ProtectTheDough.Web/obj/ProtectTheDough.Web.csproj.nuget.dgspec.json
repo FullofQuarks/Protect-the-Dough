@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj",
+        "projectName": "ProtectTheDough.Web",
+        "projectPath": "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\ProtectTheDough.Web.csproj",
+        "packagesPath": "C:\\Users\\nsmith\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nsmith\\repos\\ProtectTheDough.Web\\ProtectTheDough.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nsmith\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\nsmith\\repos\\Portal\\Source\\Portal.Core\\Portal.Core\\NugetPackage": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://ethosgroup.pkgs.visualstudio.com/_packaging/EthosDev.CI@Local/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ethosgroup/_packaging/EthosDev.CI.Npm/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
