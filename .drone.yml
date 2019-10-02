@@ -12,7 +12,9 @@ steps:
 - name: build
   image: node
   commands:
-  - npm install @angular/cli /drone/src
+  - npm prefix -g
+  - npm prefix -g
+  - npm prefix -g
   - /drone/src/@angular/cli/bin/ng build --prod $${PREFIX}
   environment:
     PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
