@@ -1,4 +1,5 @@
 # Protect the Dough
+[![Build Status](https://drone.protectthedough.shop/api/badges/nick/protect-the-dough/status.svg)](https://drone.protectthedough.shop/nick/protect-the-dough)
 
 This is the Readme for the project.
 
