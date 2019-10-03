@@ -21,6 +21,7 @@ steps:
   image: node:12
   commands:
   - cd $${PREFIX}
+  - npm --prefix /usr install -g @angular/cli
   - ng --version
   - node -v
   - npm -v
