@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: default
 
@@ -36,3 +37,8 @@ trigger:
     include:
     - push
     - pull_request
+---
+kind: signature
+hmac: 29316b7f712cfec5e6b4eff4832b3e973123e0469d5e6264306dc70f4e6c8919
+
+...
