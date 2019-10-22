@@ -11,6 +11,12 @@ import {NavComponent} from './nav/nav.component';
 import {ProductCardComponent} from './Components/product-card/product-card.component';
 import { AboutComponent } from './about/about.component';
 import { ShopComponent } from './shop/shop.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './common/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { AppEffects} from "./common/effects/site.effects";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -31,7 +37,16 @@ import { ShopComponent } from './shop/shop.component';
       {path: 'home', component: HomeComponent, pathMatch: 'full'},
       {path: 'about', component: AboutComponent, pathMatch: 'full'},
       {path: 'shop', component: ShopComponent, pathMatch: 'full'}
-    ])
+    ]),
+    EffectsModule.forRoot([AppEffects]),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]
