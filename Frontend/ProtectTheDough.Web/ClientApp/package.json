@@ -8,7 +8,7 @@
     "build-prod": "ng build --prod",
     "build:ssr": "ng run ProtectTheDough.Web:server:dev",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --tslint-config tslint.json",
     "e2e": "ng e2e"
   },
   "private": true,
