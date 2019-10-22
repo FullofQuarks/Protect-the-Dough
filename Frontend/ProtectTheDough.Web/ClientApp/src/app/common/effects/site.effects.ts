@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
-import {interval, Observable} from 'rxjs';
-import {delay, map, mapTo, take, timeout} from 'rxjs/operators';
-import {Next, ProductActionTypes} from '../actions/product.actions';
-import {Action, Store} from "@ngrx/store";
-import {State} from "../reducers";
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { interval, Observable } from 'rxjs';
+import { delay, map, mapTo, take, timeout } from 'rxjs/operators';
+import { Next, ProductActionTypes } from '../actions/product.actions';
+import { Action, Store } from '@ngrx/store';
+import { State } from '../reducers';
 
 @Injectable()
 export class AppEffects {
-  constructor(private actions$: Actions, private store: Store<State>) {}
+    constructor(private actions$: Actions, private store: Store<State>) {}
 
-  @Effect()
-  private sendMessage: Observable<Action> = this.actions$.pipe(
-    ofType(ProductActionTypes.Next),
-    () => interval(1000).pipe(mapTo(new Next()))
-  );
+    @Effect()
+    private sendMessage: Observable<Action> = this.actions$.pipe(
+        ofType(ProductActionTypes.Next),
+        () => interval(1000).pipe(mapTo(new Next()))
+    );
 }

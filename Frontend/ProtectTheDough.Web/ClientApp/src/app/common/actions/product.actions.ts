@@ -1,19 +1,16 @@
 import { Action } from '@ngrx/store';
 
 export enum ProductActionTypes {
-  LoadProducts = '[Product] Load Products',
-  Next = '[Product] Next'
+    LoadProducts = '[Product] Load Products',
+    Next = '[Product] Next'
 }
 
 export class LoadProducts implements Action {
-  readonly type = ProductActionTypes.LoadProducts;
+    readonly type = ProductActionTypes.LoadProducts;
 }
 
 export class Next implements Action {
-  readonly type = ProductActionTypes.Next;
+    readonly type = ProductActionTypes.Next;
 }
 
-
-export type ProductActions =
-  LoadProducts
-  | Next;
+export type ProductActions = LoadProducts | Next;
