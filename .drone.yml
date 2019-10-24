@@ -4,40 +4,40 @@ type: docker
 name: build
 
 steps:
-  - name: install
-    image: node:12
-    commands:
-      - cd $${PREFIX} && npm install
-    environment:
-      PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+- name: install
+  image: node:12
+  commands:
+  - cd $${PREFIX} && npm install
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
 
-  - name: linting
-    image: node:12
-    commands:
-      - cd $${PREFIX}
-      - npm run lint
-    environment:
-      PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+- name: linting
+  image: node:12
+  commands:
+  - cd $${PREFIX}
+  - npm run lint
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
 
-  - name: build
-    image: node:12
-    commands:
-      - cd $${PREFIX}
-      - npm --prefix /usr install -g @angular/cli
-      - ng --version
-      - node -v
-      - npm -v
-      - npm run build-prod
-    environment:
-      PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+- name: build
+  image: node:12
+  commands:
+  - cd $${PREFIX}
+  - npm --prefix /usr install -g @angular/cli
+  - ng --version
+  - node -v
+  - npm -v
+  - npm run build-prod
+  environment:
+    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
 
 trigger:
   branch:
-    - master
+  - master
   event:
     include:
-      - push
-      - pull_request
+    - push
+    - pull_request
 
 ---
 kind: pipeline
@@ -49,40 +49,33 @@ platform:
   arch: amd64
 
 steps:
-  - name: clean
-    commands:
-      - rm -rf $${RELEASE}
-      - rm -rf $${PREFIX}/ClientApp/dist
-    environment:
-      PREFIX: ./Frontend/ProtectTheDough.Web
-      RELEASE: $${PREFIX}/bin/Release/netcoreapp3.0
+- name: clean
+  commands:
+  - rm -rf ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0
+  - rm -rf ./Frontend/ProtectTheDough.Web/ClientApp/dist
 
-  - name: pack
-    commands:
-      - cd ./Frontend
-      - dotnet publish -c Release
+- name: pack
+  commands:
+  - cd ./Frontend
+  - dotnet publish -c Release
 
-  - name: publish
-    commands:
-      - rm -rf $${WEBPATH}/*
-      - cp -r $${RELEASE}/publish $${WEBPATH}/
-    environment:
-      WEBPATH: /var/www/html/angular
-      RELEASE: ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0
+- name: publish
+  commands:
+  - rm -rf /var/www/html/angular/*
+  - cp -r ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish /var/www/html/angular/
 
 trigger:
   branch:
-    - master
+  - master
   event:
     include:
-      - push
-    exclude:
-      - pull_request
+    - push
 
 depends_on:
-  - build
+- build
+
 ---
 kind: signature
-hmac: ab1f3c1942718ff00bc11478af9237fa981f026e3669cfef9c892e16ba776bf8
+hmac: 38fa1d2ceaa67c6e8cbf53be362db038bb4a62b9a93f7c828d49658a433353fe
 
 ...
