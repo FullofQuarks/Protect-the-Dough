@@ -44,10 +44,6 @@ kind: pipeline
 type: exec
 name: deploy
 
-platform:
-  os: linux
-  arch: amd64
-
 steps:
 - name: clean
   commands:
@@ -76,6 +72,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 38fa1d2ceaa67c6e8cbf53be362db038bb4a62b9a93f7c828d49658a433353fe
+hmac: 703d755725cc3b4acb324b8cb8b32c71ecdad38919b1eea90efe0e2b77cfc2c1
 
 ...
