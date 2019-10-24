@@ -75,7 +75,7 @@ trigger:
     - master
   event:
     include:
-      - tag
+      - push
     exclude:
       - pull_request
 
@@ -83,6 +83,6 @@ depends_on:
   - build
 ---
 kind: signature
-hmac: 775ab2c73e68042bc70bc532f7f20069299c450a75fbb0d8c934e582cbeb4a80
+hmac: ab1f3c1942718ff00bc11478af9237fa981f026e3669cfef9c892e16ba776bf8
 
 ...
