@@ -1,44 +1,88 @@
 ---
 kind: pipeline
-name: default
+type: docker
+name: build
 
 steps:
-- name: install
-  image: node:12
-  commands:
-  - cd $${PREFIX} && npm install
-  environment:
-    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
-  
-- name: linting
-  image: node:12
-  commands:
-  - cd $${PREFIX}
-  - npm run lint
-  environment:
-    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
-  
-- name: build
-  image: node:12
-  commands:
-  - cd $${PREFIX}
-  - npm --prefix /usr install -g @angular/cli
-  - ng --version
-  - node -v
-  - npm -v
-  - npm run build-prod 
-  environment:
-    PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
-  
+  - name: install
+    image: node:12
+    commands:
+      - cd $${PREFIX} && npm install
+    environment:
+      PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+
+  - name: linting
+    image: node:12
+    commands:
+      - cd $${PREFIX}
+      - npm run lint
+    environment:
+      PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+
+  - name: build
+    image: node:12
+    commands:
+      - cd $${PREFIX}
+      - npm --prefix /usr install -g @angular/cli
+      - ng --version
+      - node -v
+      - npm -v
+      - npm run build-prod
+    environment:
+      PREFIX: ./Frontend/ProtectTheDough.Web/ClientApp
+
 trigger:
   branch:
-  - master
+    - master
   event:
     include:
-    - push
-    - pull_request
+      - push
+      - pull_request
+
+---
+kind: pipeline
+type: exec
+name: deploy
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: clean
+    commands:
+      - rm -rf $${RELEASE}
+      - rm -rf $${PREFIX}/ClientApp/dist
+    environment:
+      PREFIX: ./Frontend/ProtectTheDough.Web
+      RELEASE: $${PREFIX}/bin/Release/netcoreapp3.0
+
+  - name: pack
+    commands:
+      - cd ./Frontend
+      - dotnet publish -c Release
+
+  - name: publish
+    commands:
+      - rm -rf $${WEBPATH}/*
+      - cp -r $${RELEASE}/publish $${WEBPATH}/
+    environment:
+      WEBPATH: /var/www/html/angular
+      RELEASE: ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0
+
+trigger:
+  branch:
+    - master
+  event:
+    include:
+      - tag
+    exclude:
+      - pull_request
+
+depends_on:
+  - build
 ---
 kind: signature
-hmac: 29316b7f712cfec5e6b4eff4832b3e973123e0469d5e6264306dc70f4e6c8919
+hmac: 775ab2c73e68042bc70bc532f7f20069299c450a75fbb0d8c934e582cbeb4a80
 
 ...
