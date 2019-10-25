@@ -45,11 +45,7 @@ type: exec
 name: deploy
 
 steps:
-- name: clean
-  commands:
-  - rm -rf /var/www/html/angular/*
-
-- name: install_modules
+- name: node_modules
   commands:
   - cd Frontend/ProtectTheDough.Web/ClientApp
   - npm install --cache /tmp/empty-cache
@@ -59,6 +55,10 @@ steps:
   commands:
   - cd Frontend
   - dotnet publish -c Release
+
+- name: clean
+  commands:
+  - rm -rf /var/www/html/angular/*
 
 - name: publish
   commands:
@@ -76,6 +76,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ef3982fdce4284b62952efd3fea3b00882966365040b9531121df5d37eb0bd9d
+hmac: 354a3c849b8395bd66484b0b24c8c455d6241acd9d6f36c8efb4073fb472fa87
 
 ...
