@@ -47,18 +47,16 @@ name: deploy
 steps:
 - name: clean
   commands:
-  - rm -rf ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0
-  - rm -rf ./Frontend/ProtectTheDough.Web/ClientApp/dist
+  - rm -rf /var/www/html/angular/*
 
 - name: pack
   commands:
-  - cd ./Frontend
+  - cd /tmp/drone-${RANDOM}/drone/src/Frontend
   - dotnet publish -c Release
 
 - name: publish
   commands:
-  - rm -rf /var/www/html/angular/*
-  - cp -r ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish /var/www/html/angular/
+  - cp -r /tmp/drone-${RANDOM}/drone/src/Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish /var/www/html/angular/
 
 trigger:
   branch:
@@ -72,6 +70,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 703d755725cc3b4acb324b8cb8b32c71ecdad38919b1eea90efe0e2b77cfc2c1
+hmac: cd925029bc3a167915ecf3f1304c6474aba854e23a32a5fe0b488a9e5b2307f4
 
 ...
