@@ -49,6 +49,12 @@ steps:
   commands:
   - rm -rf /var/www/html/angular/*
 
+- name: install_modules
+  commands:
+  - cd Frontend/ProtectTheDough.Web/ClientApp
+  - npm install
+  - cd ../..
+
 - name: pack
   commands:
   - cd Frontend
@@ -70,6 +76,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 7b33346a828ea5d82202f9be98e2da7f8ee310138501a93c85db99c0fca958c4
+hmac: 6b220baa2bea25bad4740b76e5c655ada5d0a0c8b4caf16b726b9cf7319eb26d
 
 ...
