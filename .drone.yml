@@ -62,7 +62,8 @@ steps:
 
 - name: publish
   commands:
-  - cp -r ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish /var/www/html/angular/
+  - whoami
+  - cp -r ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish/* /var/www/html/angular/
 
 trigger:
   branch:
