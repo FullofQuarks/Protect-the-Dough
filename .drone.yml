@@ -58,8 +58,7 @@ steps:
   - whoami
   - temppath=$PATH
   - PATH=$(pwd)/node_modules:$PATH
-  - npm cache clean
-  - npm install --verbose
+  - npm install --verbose --cache /tmp/empty-cache
   - cd ../..
 
 - name: pack
@@ -84,6 +83,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: fa2e41e4a1e6462030d498528070eb4c8e8aa20371ac4a6987b5e8b20a56fa62
+hmac: 0c467e8afc1f1c238277811f46df532f6de9d9713a3ae70e4e52c546fea582e6
 
 ...
