@@ -8,8 +8,7 @@ platform:
   arch: amd64
 
 clone:
-  disable:
-  - true
+  disable: true
 
 steps:
 - name: clean
