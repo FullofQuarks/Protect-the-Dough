@@ -52,20 +52,13 @@ steps:
 - name: install_modules
   commands:
   - cd Frontend/ProtectTheDough.Web/ClientApp
-  - which npm
-  - which node
-  - echo $NODE_PATH
-  - whoami
-  - temppath=$PATH
-  - PATH=$(pwd)/node_modules:$PATH
-  - npm install --verbose --cache /tmp/empty-cache
+  - npm install --cache /tmp/empty-cache
   - cd ../..
 
 - name: pack
   commands:
   - cd Frontend
   - dotnet publish -c Release
-  - PATH=$temppath
 
 - name: publish
   commands:
@@ -83,6 +76,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 0c467e8afc1f1c238277811f46df532f6de9d9713a3ae70e4e52c546fea582e6
+hmac: ef3982fdce4284b62952efd3fea3b00882966365040b9531121df5d37eb0bd9d
 
 ...
