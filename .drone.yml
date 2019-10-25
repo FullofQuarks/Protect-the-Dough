@@ -55,6 +55,7 @@ steps:
   - which npm
   - which node
   - echo $NODE_PATH
+  - whoami
   - temppath=$PATH
   - PATH=$(pwd)/node_modules:$PATH
   - npm install
@@ -82,6 +83,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 6b220baa2bea25bad4740b76e5c655ada5d0a0c8b4caf16b726b9cf7319eb26d
+hmac: 4f93705d1b573ce7207db48187c4c7acc9c48cf95d1c73c1ef0b892482f6da70
 
 ...
