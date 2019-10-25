@@ -58,11 +58,13 @@ steps:
 
 - name: clean
   commands:
+  - rm -rf /tmp/empty-cache
   - rm -rf /var/www/html/angular/*
 
 - name: publish
   commands:
   - whoami
+  - pwd
   - cp -r ./ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish/* /var/www/html/angular/
 
 trigger:
@@ -77,6 +79,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 319c17baaef2eeb1c599a817513f89371273afd0c209c111af10b02c8d0c4aa1
+hmac: f5c7528098c461205aa53226658a36d741909903a61cad736e8e511371f15e40
 
 ...
