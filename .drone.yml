@@ -63,7 +63,7 @@ steps:
 - name: publish
   commands:
   - whoami
-  - cp -r ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish/* /var/www/html/angular/
+  - cp -r ./ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish/* /var/www/html/angular/
 
 trigger:
   branch:
@@ -77,6 +77,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: bad118dcc96edda7b44a4ff3022afdfb5fed975a0eee7b25c17c83a21471110d
+hmac: 319c17baaef2eeb1c599a817513f89371273afd0c209c111af10b02c8d0c4aa1
 
 ...
