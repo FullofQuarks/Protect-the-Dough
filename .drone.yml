@@ -1,5 +1,44 @@
 ---
 kind: pipeline
+type: exec
+name: deploy
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  disable:
+  - true
+
+steps:
+- name: clean
+  commands:
+  - rm -rf ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0
+  - rm -rf ./Frontend/ProtectTheDough.Web/ClientApp/dist
+
+- name: pack
+  commands:
+  - cd ./Frontend
+  - dotnet publish -c Release
+
+- name: publish
+  commands:
+  - rm -rf /var/www/html/angular/*
+  - cp -r ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish /var/www/html/angular/
+
+trigger:
+  branch:
+  - master
+  event:
+    include:
+    - push
+
+depends_on:
+- build
+
+---
+kind: pipeline
 type: docker
 name: build
 
@@ -40,38 +79,7 @@ trigger:
     - pull_request
 
 ---
-kind: pipeline
-type: exec
-name: deploy
-
-steps:
-- name: clean
-  commands:
-  - rm -rf ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0
-  - rm -rf ./Frontend/ProtectTheDough.Web/ClientApp/dist
-
-- name: pack
-  commands:
-  - cd ./Frontend
-  - dotnet publish -c Release
-
-- name: publish
-  commands:
-  - rm -rf /var/www/html/angular/*
-  - cp -r ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish /var/www/html/angular/
-
-trigger:
-  branch:
-  - master
-  event:
-    include:
-    - push
-
-depends_on:
-- build
-
----
 kind: signature
-hmac: 703d755725cc3b4acb324b8cb8b32c71ecdad38919b1eea90efe0e2b77cfc2c1
+hmac: 6c73ca65e6636958aaeb10901f69e76cdeeb6113caeb03dd27a360d713c8d5cc
 
 ...
