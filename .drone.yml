@@ -49,11 +49,10 @@ steps:
   commands:
   - cd Frontend/ProtectTheDough.Web/ClientApp
   - npm install --cache /tmp/empty-cache
-  - cd ../..
 
 - name: pack
   commands:
-  - cd Frontend
+  - cd ./Frontend
   - dotnet publish -c Release
 
 - name: clean
@@ -63,8 +62,6 @@ steps:
 
 - name: publish
   commands:
-  - whoami
-  - pwd
   - cp -r ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish/* /var/www/html/angular/
 
 trigger:
@@ -79,6 +76,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 0b9dd94c243bc588972d2946b21f736896f8ffea5bced1b05a6fa560cb7436f6
+hmac: 97d720ed72399140d3237d43ac2dc5f890e817cb7c5ee41e593feb88854990fa
 
 ...
