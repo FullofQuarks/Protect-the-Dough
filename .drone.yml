@@ -52,6 +52,11 @@ steps:
 - name: install_modules
   commands:
   - cd Frontend/ProtectTheDough.Web/ClientApp
+  - which npm
+  - which node
+  - echo $NODE_PATH
+  - temppath=$PATH
+  - PATH=$(pwd)/node_modules:$PATH
   - npm install
   - cd ../..
 
@@ -59,6 +64,7 @@ steps:
   commands:
   - cd Frontend
   - dotnet publish -c Release
+  - PATH=$temppath
 
 - name: publish
   commands:
