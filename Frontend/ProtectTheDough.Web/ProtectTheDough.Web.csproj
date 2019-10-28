@@ -29,6 +29,7 @@
 
     <ItemGroup>
       <Folder Include="ClientApp\src\app\common\effects" />
+      <Folder Include="ClientApp\src\app\common\services" />
       <Folder Include="ClientApp\src\app\Components" />
     </ItemGroup>
 
