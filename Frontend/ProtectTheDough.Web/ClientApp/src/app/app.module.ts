@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppEffects } from './common/effects/site.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { InMemoryDataService } from '@common/services/in-memory-data.service';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent, NavComponent, ProductCardComponent, AboutComponent, ShopComponent],
@@ -24,6 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         NgbModule,
         HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
         FormsModule,
         RouterModule.forRoot([
             { path: '', component: HomeComponent, pathMatch: 'full' },
