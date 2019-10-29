@@ -4,7 +4,8 @@ import { Product } from '@common/models/product';
 export enum ProductActionTypes {
     LoadProducts = '[Product] Load Products',
     AddProduct = '[Product] Add Product',
-    RemoveProduct = '[Product] Remove Product'
+    RemoveProduct = '[Product] Remove Product',
+    RemoveAllProducts = '[Product] Remove all Products'
 }
 
 export class LoadProducts implements Action {
@@ -20,7 +21,13 @@ export class AddProduct implements Action {
 export class RemoveProduct implements Action {
     readonly type = ProductActionTypes.RemoveProduct;
 
-    constructor(public payload: { id: number }) {}
+    constructor(public payload: { cartId: number, id: number }) {}
 }
 
-export type ProductActions = LoadProducts | AddProduct | RemoveProduct;
+export class RemoveAllProducts implements Action {
+    readonly type = ProductActionTypes.RemoveAllProducts;
+
+    constructor(public payload: { cartId: number }) {}
+}
+
+export type ProductActions = LoadProducts | AddProduct | RemoveProduct | RemoveAllProducts;
