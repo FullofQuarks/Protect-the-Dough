@@ -1,16 +1,21 @@
 import { Action } from '@ngrx/store';
+import {Product} from '@common/models/product';
 
 export enum ProductActionTypes {
     LoadProducts = '[Product] Load Products',
-    Next = '[Product] Next'
+    AddProduct = '[Product] Add Product'
 }
 
 export class LoadProducts implements Action {
     readonly type = ProductActionTypes.LoadProducts;
 }
 
-export class Next implements Action {
-    readonly type = ProductActionTypes.Next;
+export class AddProduct implements Action {
+  readonly type = ProductActionTypes.AddProduct;
+
+  constructor(public payload: { product: Product }) {}
 }
 
-export type ProductActions = LoadProducts | Next;
+export type ProductActions =
+  LoadProducts
+  | AddProduct;

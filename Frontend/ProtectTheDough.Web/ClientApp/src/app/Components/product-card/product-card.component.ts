@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '@common/models/product';
+import { ProductEvents } from '@common/events/product.events';
 
 @Component({
     selector: 'app-product-card',
@@ -6,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-    constructor() {}
+    @Input() product: Product;
+    counter: number;
 
-    ngOnInit() {}
+    constructor(private productEvents: ProductEvents) {}
+
+    ngOnInit() {
+        this.counter = 0;
+    }
+
+    addProduct() {
+        const tempProduct: Product = {
+            id: this.counter,
+            name: 'Temp Product',
+            cost: 4
+        };
+        this.counter += 1;
+        this.productEvents.AddProduct(tempProduct);
+    }
 }

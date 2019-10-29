@@ -16,8 +16,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './common/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { AppEffects } from './common/effects/site.effects';
+import { AppEffects } from '@common/effects/site.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { ProductEvents } from '@common/events/product.events';
 import { InMemoryDataService } from '@common/services/in-memory-data.service';
 
 @NgModule({
@@ -44,7 +45,7 @@ import { InMemoryDataService } from '@common/services/in-memory-data.service';
         }),
         !environment.production ? StoreDevtoolsModule.instrument() : []
     ],
-    providers: [],
+    providers: [ProductEvents],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
