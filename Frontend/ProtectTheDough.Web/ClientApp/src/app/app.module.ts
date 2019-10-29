@@ -43,7 +43,11 @@ import { InMemoryDataService } from '@common/services/in-memory-data.service';
                 strictActionImmutability: true
             }
         }),
-        !environment.production ? StoreDevtoolsModule.instrument() : []
+        StoreDevtoolsModule.instrument({
+          maxAge: 25,
+          logOnly: environment.production,
+          serialize: true
+        })
     ],
     providers: [ProductEvents],
     bootstrap: [AppComponent]

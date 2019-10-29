@@ -1,22 +1,11 @@
-import { ActionReducerMap, createFeatureSelector, createSelector, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
-import * as fromSite from './site.reducer';
-import {createEntityAdapter, EntityAdapter} from '@ngrx/entity';
-import {Product} from '@common/models/product';
-
-export interface State {
-    fizzbuzz: fromSite.State;
-}
+import { siteReducer } from './site.reducer';
+import { State } from '@common/state';
+import { storeFreeze } from 'ngrx-store-freeze';
 
 export const reducers: ActionReducerMap<State> = {
-    fizzbuzz: fromSite.reducer
+    site: siteReducer
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
-
-export const getFizzBuzzState = createFeatureSelector<fromSite.State>('fizzbuzz');
-
-export const isLoaded = createSelector(
-    getFizzBuzzState,
-    fromSite.getLoaded
-);
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze] : [];

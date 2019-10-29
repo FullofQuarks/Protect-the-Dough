@@ -22,11 +22,6 @@
         <Content Include="ClientApp\.prettierrc" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-        <None Include="ClientApp\src\app\common\actions\product.actions.ts" />
-        <None Include="ClientApp\src\app\common\events\product.events.ts" />
-        <None Include="ClientApp\src\app\common\models\product.ts" />
-        <None Include="ClientApp\src\app\common\reducers\index.ts" />
-        <None Include="ClientApp\src\app\common\reducers\site.reducer.ts" />
     </ItemGroup>
 
     <ItemGroup>

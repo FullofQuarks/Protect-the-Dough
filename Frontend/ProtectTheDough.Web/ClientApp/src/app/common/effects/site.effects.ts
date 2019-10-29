@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { interval, Observable } from 'rxjs';
-import { delay, map, mapTo, take, timeout } from 'rxjs/operators';
-import { ProductActionTypes } from '../actions/product.actions';
 import { Action, Store } from '@ngrx/store';
-import { State } from '../reducers';
+import {State} from '@common/state';
 
 @Injectable()
 export class AppEffects {
