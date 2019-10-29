@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-import { State } from '@common/state';
+import { ProductEvents } from '@common/events/product.events';
 
 @Component({
     selector: 'app-home',
@@ -9,8 +7,7 @@ import { State } from '@common/state';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    constructor(private store: Store<State>) {}
-    message: Observable<string>;
+    constructor() {}
 
     ngOnInit() {}
 }
