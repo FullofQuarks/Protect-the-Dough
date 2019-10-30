@@ -1,8 +1,22 @@
 <h1 class="text-center">Protect the Dough</h1>
-<hr>
+<hr />
+<div class="row" *ngFor="let product of products | async">
+    Item {{ product.id }}: {{ product.name }} costs {{ product.cost | currency }} &nbsp;<button
+        class="btn btn-danger"
+        (click)="removeProduct(product.id)"
+    >
+        Remove
+    </button>
+</div>
+<ng-container *ngIf="(products | async).length != 0">
+    <hr />
+    <div>
+        <button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button>
+    </div>
+</ng-container>
 <div class="d-flex justify-content-lg-between flex-wrap align-content-between">
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
+    <app-product-card></app-product-card>
+    <app-product-card></app-product-card>
+    <app-product-card></app-product-card>
+    <app-product-card></app-product-card>
 </div>
