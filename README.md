@@ -10,6 +10,7 @@ This is the Readme for the project.
     * NgRx = Angular Redux: This is a state-management tool, useful for keeping track of information needed site-wide. This eliminates the need for multiple services, subjects, or guards to share data amongst all components. 
     * In-depth description located in wiki.
     * Install the Redux Devtools extension for Chrome, located [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+    * **Important!** Please read [this](https://git.protectthedough.shop/nick/protect-the-dough/wiki/NgRx%3A-Angular-Redux) wiki article!
 * Backend: Not sure yet
     * [Ruby](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one) - This looks to be what is preferred.
 * Database: [MongoDB](https://docs.mongodb.com/manual/introduction/)
