@@ -19,7 +19,9 @@ export function siteReducer(state = initialState, action: AddProduct | RemovePro
                 cart: {
                     products: [
                         ...state.cart.products.filter(x => {
-                            if (state.cart.id == action.payload.cartId) return x.id != action.payload.id;
+                            if (state.cart.id === action.payload.cartId) {
+                                return x.id !== action.payload.id;
+                            }
                         })
                     ],
                     id: state.cart.id
