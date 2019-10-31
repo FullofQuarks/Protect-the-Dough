@@ -20,6 +20,7 @@ import { AppEffects } from '@common/effects/site.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEvents } from '@common/events/product.events';
 import { InMemoryDataService } from '@common/services/in-memory-data.service';
+import { AppRoutingModule } from '@app/app.routing';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent, NavComponent, ProductCardComponent, AboutComponent, ShopComponent],
@@ -29,12 +30,7 @@ import { InMemoryDataService } from '@common/services/in-memory-data.service';
         HttpClientModule,
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
         FormsModule,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'home', component: HomeComponent, pathMatch: 'full' },
-            { path: 'about', component: AboutComponent, pathMatch: 'full' },
-            { path: 'shop', component: ShopComponent, pathMatch: 'full' }
-        ]),
+        AppRoutingModule,
         EffectsModule.forRoot([AppEffects]),
         StoreModule.forRoot(reducers, {
             metaReducers,
