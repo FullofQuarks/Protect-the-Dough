@@ -1,5 +1,7 @@
 <h1 class="text-center">Protect the Dough</h1>
 <hr />
+<div>Is user logged in? {{ loggedIn$ | async }}</div>
+<hr />
 <div class="row" *ngFor="let product of products | async">
     Item {{ product.id }}: {{ product.name }} costs {{ product.cost | currency }} &nbsp;<button
         class="btn btn-danger"

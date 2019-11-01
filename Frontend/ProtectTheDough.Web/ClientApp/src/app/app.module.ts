@@ -20,6 +20,7 @@ import { AppEffects } from '@common/effects/site.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEvents } from '@common/events/product.events';
 import { InMemoryDataService } from '@common/services/in-memory-data.service';
+import { UserEvents } from '@common/events';
 import { AppRoutingModule } from '@app/app.routing';
 
 @NgModule({
@@ -40,12 +41,12 @@ import { AppRoutingModule } from '@app/app.routing';
             }
         }),
         StoreDevtoolsModule.instrument({
-          maxAge: 25,
-          logOnly: environment.production,
-          serialize: true
+            maxAge: 25,
+            logOnly: environment.production,
+            serialize: true
         })
     ],
-    providers: [ProductEvents],
+    providers: [ProductEvents, UserEvents],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
