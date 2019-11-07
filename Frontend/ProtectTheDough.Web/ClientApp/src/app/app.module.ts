@@ -20,6 +20,8 @@ import { AppEffects } from '@common/effects/site.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEvents } from '@common/events/product.events';
 import { InMemoryDataService } from '@common/services/in-memory-data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { UserEvents } from '@common/events';
 import { ProductEffects } from '@common/effects/product.effects';
 import { AppRoutingModule } from '@app/app.routing';
@@ -27,6 +29,7 @@ import { AppRoutingModule } from '@app/app.routing';
 @NgModule({
     declarations: [AppComponent, HomeComponent, NavComponent, ProductCardComponent, AboutComponent, ShopComponent],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         NgbModule,
         HttpClientModule,
@@ -45,7 +48,8 @@ import { AppRoutingModule } from '@app/app.routing';
             maxAge: 25,
             logOnly: environment.production,
             serialize: true
-        })
+        }),
+        ToastrModule.forRoot()
     ],
     providers: [ProductEvents, UserEvents],
     bootstrap: [AppComponent]
