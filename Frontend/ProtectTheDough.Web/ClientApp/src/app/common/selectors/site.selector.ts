@@ -8,3 +8,8 @@ export const selectCartProducts = createSelector(
     selectSiteState,
     (state: SiteState) => state.cart.products
 );
+
+export const selectIsLoaded = createSelector(
+    selectSiteState,
+    (state: SiteState) => state.loaded
+);

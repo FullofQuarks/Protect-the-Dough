@@ -1,7 +1,16 @@
-import { AddProduct, ProductActionTypes, RemoveAllProducts, RemoveProduct } from '../actions/product.actions';
+import {
+    AddProduct,
+    LoadedProducts,
+    ProductActionTypes,
+    RemoveAllProducts,
+    RemoveProduct
+} from '../actions/product.actions';
 import { initialState, SiteState } from '@common/state/site.state';
 
-export function siteReducer(state = initialState, action: AddProduct | RemoveProduct | RemoveAllProducts): SiteState {
+export function siteReducer(
+    state = initialState,
+    action: AddProduct | RemoveProduct | RemoveAllProducts | LoadedProducts
+): SiteState {
     switch (action.type) {
         case ProductActionTypes.AddProduct: {
             return {
@@ -34,6 +43,17 @@ export function siteReducer(state = initialState, action: AddProduct | RemovePro
                 ...state,
                 cart: {
                     products: [],
+                    id: state.cart.id
+                }
+            };
+        }
+
+        case ProductActionTypes.LoadedProducts: {
+            return {
+                ...state,
+                loaded: true,
+                cart: {
+                    products: action.payload.products,
                     id: state.cart.id
                 }
             };

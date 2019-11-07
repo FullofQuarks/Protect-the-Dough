@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ProductEvents } from '@common/events/product.events';
 import { Product } from '@common/models/product';
 import { UserEvents } from '@common/events';
+import { User } from '@common/models/user';
 
 @Component({
     selector: 'app-home',
@@ -10,13 +11,19 @@ import { UserEvents } from '@common/events';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    products: Observable<Product[]>;
-    loggedIn$: Observable<boolean>;
+    public products: Observable<Product[]>;
+    public isSiteLoaded$: Observable<boolean>;
+    public loggedIn$: Observable<boolean>;
 
     constructor(private productEvents: ProductEvents, private userEvents: UserEvents) {}
 
     ngOnInit() {
         this.products = this.productEvents.getProducts$;
+        this.productEvents.isLoaded$.subscribe((loaded: boolean) => {
+            if (loaded === false) {
+                this.productEvents.LoadProducts();
+            }
+        });
         this.loggedIn$ = this.userEvents.isLoggedIn$;
     }
 

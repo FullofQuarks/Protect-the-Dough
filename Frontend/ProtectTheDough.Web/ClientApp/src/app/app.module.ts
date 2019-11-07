@@ -21,6 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductEvents } from '@common/events/product.events';
 import { InMemoryDataService } from '@common/services/in-memory-data.service';
 import { UserEvents } from '@common/events';
+import { ProductEffects } from '@common/effects/product.effects';
 import { AppRoutingModule } from '@app/app.routing';
 
 @NgModule({
@@ -32,7 +33,7 @@ import { AppRoutingModule } from '@app/app.routing';
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
         FormsModule,
         AppRoutingModule,
-        EffectsModule.forRoot([AppEffects]),
+        EffectsModule.forRoot([AppEffects, ProductEffects]),
         StoreModule.forRoot(reducers, {
             metaReducers,
             runtimeChecks: {
