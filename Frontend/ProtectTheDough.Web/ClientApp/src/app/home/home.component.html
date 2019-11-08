@@ -16,9 +16,11 @@
         <button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button>
     </div>
 </ng-container>
-<div class="d-flex justify-content-lg-between flex-wrap align-content-between">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+<div class="d-flex justify-content-between flex-wrap align-content-between">
+    <ng-container
+        class="d-flex justify-content-between flex-wrap align-content-between"
+        *ngFor="let product of products | async"
+    >
+        <app-product-card [product]="product"></app-product-card>
+    </ng-container>
 </div>
