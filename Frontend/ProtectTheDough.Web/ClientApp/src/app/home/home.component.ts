@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { ProductEvents } from '@common/events/product.events';
 import { Product } from '@common/models/product';
 import { UserEvents } from '@common/events';
+import { User } from '@common/models/user';
 
 @Component({
     selector: 'app-home',

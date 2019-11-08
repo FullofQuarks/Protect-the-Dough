@@ -9,12 +9,21 @@ import { ProductEvents } from '@common/events/product.events';
 })
 export class ProductCardComponent implements OnInit {
     @Input() product: Product;
+    counter: number;
 
     constructor(private productEvents: ProductEvents) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.counter = 0;
+    }
 
     addProduct() {
-        this.productEvents.AddProduct(this.product);
+        const tempProduct: Product = {
+            id: this.counter,
+            name: 'Temp Product',
+            cost: 4
+        };
+        this.counter += 1;
+        this.productEvents.AddProduct(tempProduct);
     }
 }
