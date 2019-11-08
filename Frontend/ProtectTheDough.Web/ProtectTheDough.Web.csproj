@@ -22,6 +22,10 @@
         <Content Include="ClientApp\.prettierrc" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+        <None Include="ClientApp\src\app\components\home\home.component.css" />
+        <None Include="ClientApp\src\app\components\home\home.component.html" />
+        <None Include="ClientApp\src\app\components\nav\nav.component.css" />
+        <None Include="ClientApp\src\app\components\nav\nav.component.html" />
     </ItemGroup>
 
     <ItemGroup>
