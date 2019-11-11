@@ -1,62 +1,52 @@
 [
     {
-        "_id" : ObjectId("5dc193426adf0e3c39e72b99"),
         "CatalogID" : 1,
         "Name" : "French Bread",
-        "Price" : NumberDecimal("4.00000000000000")
+        "Price" : 4.00000000000000
     },
     {
-        "_id" : ObjectId("5dc193586adf0e3c39e72b9a"),
         "CatalogID" : 2,
         "Name" : "Cibatta",
-        "Price" : NumberDecimal("4.00000000000000")
+        "Price" : 4.00000000000000
     },
     {
-        "_id" : ObjectId("5dc193626adf0e3c39e72b9b"),
         "CatalogID" : 3,
         "Name" : "Italian Bread",
-        "Price" : NumberDecimal("3.00000000000000")
+        "Price" : 3.00000000000000
     },
     {
-        "_id" : ObjectId("5dc193ad6adf0e3c39e72b9c"),
         "CatalogID" : 4,
         "Name" : "Rye Bread",
-        "Price" : NumberDecimal("2.00000000000000")
+        "Price" : 2.00000000000000
     },
     {
-        "_id" : ObjectId("5dc193c46adf0e3c39e72b9d"),
         "CatalogID" : 5,
         "Name" : "Banana Bread",
-        "Price" : NumberDecimal("5.00000000000000")
-    },SAVING MONGODB SCHEMA
+        "Price" : 5.00000000000000
+    },
     {
-        "_id" : ObjectId("5dc193d06adf0e3c39e72b9e"),
         "CatalogID" : 6,
         "Name" : "Bagel",
-        "Price" : NumberDecimal("4.00000000000000")
+        "Price" : 4.00000000000000
     },
     {
-        "_id" : ObjectId("5dc193fa6adf0e3c39e72b9f"),
         "CatalogID" : 7,
         "Name" : "Sourdough Bread",
-        "Price" : NumberDecimal("5.00000000000000")
+        "Price" : 5.00000000000000
     },
     {
-        "_id" : ObjectId("5dc194096adf0e3c39e72ba0"),
         "CatalogID" : 8,
         "Name" : "Cornbread",
-        "Price" : NumberDecimal("7.00000000000000")
+        "Price" : 7.00000000000000
     },
     {
-        "_id" : ObjectId("5dc194476adf0e3c39e72ba1"),
         "CatalogID" : 9,
         "Name" : "Pumpernickel",
-        "Price" : NumberDecimal("1.50000000000000")
+        "Price" : 1.50000000000000
     },
     {
-        "_id" : ObjectId("5dc194616adf0e3c39e72ba2"),
         "CatalogID" : 10,
         "Name" : "Texas Toast",
-        "Price" : NumberDecimal("6.50000000000000")
+        "Price" : 6.50000000000000
     }
 ]
