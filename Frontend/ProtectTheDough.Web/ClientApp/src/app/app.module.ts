@@ -16,6 +16,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppEffects } from '@common/effects/site.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { RegisterComponent } from './components/register/register.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 import { ProductEvents } from '@common/events/product.events';
 import { InMemoryDataService } from '@common/services/in-memory-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +27,15 @@ import { ProductEffects } from '@common/effects/product.effects';
 import { AppRoutingModule } from '@app/app.routing';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, NavComponent, ProductCardComponent, AboutComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NavComponent,
+        ProductCardComponent,
+        AboutComponent,
+        RegisterComponent,
+        UserInfoComponent
+    ],
     imports: [
         BrowserAnimationsModule,
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +43,14 @@ import { AppRoutingModule } from '@app/app.routing';
         HttpClientModule,
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
         FormsModule,
+        RouterModule.forRoot([
+            { path: '', component: HomeComponent, pathMatch: 'full' },
+            { path: 'home', component: HomeComponent, pathMatch: 'full' },
+            { path: 'about', component: AboutComponent, pathMatch: 'full' },
+            { path: 'register', component: RegisterComponent, pathMatch: 'full' },
+            { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' }
+        ]),
+        EffectsModule.forRoot([AppEffects]),
         AppRoutingModule,
         EffectsModule.forRoot([AppEffects, ProductEffects]),
         StoreModule.forRoot(reducers, {
