@@ -86,9 +86,6 @@ steps:
   - docker container stop express-backend
   - docker container rm express-backend
   - docker image rm nick/express-backend --force
-  environment:
-    PASS:
-      from_secret: password
 
 - name: build-image
   commands:
@@ -98,9 +95,6 @@ steps:
 - name: run-container
   commands:
   - docker run -d --name express-backend -p 3030:3000 nick/express-backend
-  environment:
-    PASS:
-      from_secret: password
 
 trigger:
   branch:
@@ -110,10 +104,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: 57532ee6f199e455e83723a8719dbd9d7913e5370d945ec1b86e85565f5b9604
+hmac: 7055866d7a4789960bca300eb5da1659f454fee660c1171c0fb9cff38c5aa0b6
 
----
-kind: secret
-name: password
-data: iWUg/vO+G9JkIp6WfG/hOmV5eZOhVAU/VCsq7fCkglzsOg==
 ...
