@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
     res.send("hello world");
 });
 
-app.get("/catalog", (req, res) => {
+app.get("/catalog", cors(corsOptions), (req, res) => {
     // User connect method to connect to the Server
     client.connect(function (err) {
         assert.equal(err, null);
@@ -85,7 +85,7 @@ app.get("/catalog", (req, res) => {
     });
 });
 
-app.get("/users", (req, res) => {
+app.get("/users", cors(corsOptions), (req, res) => {
     client.connect(function (err) {
         assert.equal(err, null);
         var db = client.db(dbName);
