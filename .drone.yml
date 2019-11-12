@@ -75,7 +75,34 @@ depends_on:
 - build
 
 ---
+kind: pipeline
+type: exec
+name: backend
+
+steps:
+- name: clean
+  commands:
+  - docker container stop express-backend
+  - docker container rm express-backend
+  - docker image rm nick/express-backend --force
+
+- name: build-image
+  commands:
+  - cd Backend
+  - docker build -t nick/express-backend .
+
+- name: run-container
+  commands:
+  - docker run -d --name express-backend -p 3030:3000 nick/express-backend 
+
+trigger:
+  branch:
+  - master
+  event:
+    include:
+    - push
+---
 kind: signature
-hmac: 97d720ed72399140d3237d43ac2dc5f890e817cb7c5ee41e593feb88854990fa
+hmac: 57532ee6f199e455e83723a8719dbd9d7913e5370d945ec1b86e85565f5b9604
 
 ...

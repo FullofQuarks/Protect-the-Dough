@@ -1,8 +1,8 @@
 {
   "name": "ptdbackend",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "protect the dough backend",
-  "main": "server.js",
+  "main": "start.js",
   "dependencies": {
     "assert": "^2.0.0",
     "body-parser": "^1.19.0",
@@ -17,7 +17,7 @@
     "@babel/register": "^7.7.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
