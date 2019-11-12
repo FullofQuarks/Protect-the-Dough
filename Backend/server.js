@@ -22,7 +22,21 @@ const LATEST_DATA_QUERY = {
 const MongoClient = require('mongodb').MongoClient;
 
 // Connection String
-const url = 'mongodb://localhost:27017';
+let url = '';
+const user = 'pitnicky';
+const password = 'protectthedough';
+const authMechanism = 'SCRAM-SHA-1';
+
+const NODE_ENV = process.env.NODE_ENV;
+if (NODE_ENV !== 'production') {
+    url = 'mongodb://localhost:27017';
+}
+else {
+    url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
+    console.log(url);
+}
+console.log('Environment is:', NODE_ENV);
+console.log('Connection string is:', url);
 
 // Database name
 const dbName = 'ptd';
@@ -55,6 +69,7 @@ app.get("/", (req, res) => {
 app.get("/catalog", (req, res) => {
 	// User connect method to connect to the Server
 	client.connect(function(err) {
+	    assert.equal(err, null);
 		var db = client.db(dbName);
 		db.collection('catalog').find().toArray(function(err, docs) {
 			if(typeof(docs !== undefined)) {
@@ -66,6 +81,7 @@ app.get("/catalog", (req, res) => {
 
 app.get("/users", (req, res) => {
     client.connect(function(err) {
+        assert.equal(err, null);
         var db = client.db(dbName);
         db.collection('users').find().toArray(function(err, docs) {
             if(typeof(docs) !== undefined) {
