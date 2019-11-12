@@ -6,11 +6,6 @@ const bodyParser = require('body-parser');
 const assert = require('assert');
 const app= express.Application = express();
 app.use(bodyParser.json());
-const corsOptions = {
-    origin: 'https://localhost:5001/',
-    optionsSuccessStatus: 200
-};
-app.use(cors());
 const port = 3000;
 const LATEST_DATA_QUERY = {
   query: "db.getCollection('Catalog').find({})"
@@ -31,10 +26,16 @@ const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV !== 'production') {
     url = 'mongodb://localhost:27017';
 }
+var corsOptions;
 else {
     url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
     console.log(url);
+    corsOptions = {
+	origin: 'https://protectthedough.shop',
+	optionsSuccessStatus: 200
+    };
 }
+app.use(cors());
 console.log('Environment is:', NODE_ENV);
 console.log('Connection string is:', url);
 
