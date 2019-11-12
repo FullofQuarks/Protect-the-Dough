@@ -24,6 +24,7 @@ const authMechanism = 'SCRAM-SHA-1';
 
 const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV !== 'production') {
+    app.use(cors());
     url = 'mongodb://localhost:27017';
 }
 var corsOptions;
@@ -34,8 +35,9 @@ else {
 	origin: 'https://protectthedough.shop',
 	optionsSuccessStatus: 200
     };
+    app.use(cors(corsOptions));
 }
-app.use(cors());
+
 console.log('Environment is:', NODE_ENV);
 console.log('Connection string is:', url);
 
