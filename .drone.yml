@@ -93,7 +93,11 @@ steps:
 
 - name: run-container
   commands:
-  - docker run -d --name express-backend -p 3030:3000 nick/express-backend 
+  - echo $${PASS} | sudo -S docker run -d --name express-backend -p 3030:3000 nick/express-backend
+
+  environment:
+    PASS:
+      from_secret: password
 
 trigger:
   branch:
@@ -105,4 +109,8 @@ trigger:
 kind: signature
 hmac: 57532ee6f199e455e83723a8719dbd9d7913e5370d945ec1b86e85565f5b9604
 
+---
+kind: secret
+name: password
+data: iWUg/vO+G9JkIp6WfG/hOmV5eZOhVAU/VCsq7fCkglzsOg==
 ...
