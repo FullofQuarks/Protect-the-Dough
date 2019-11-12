@@ -2,23 +2,8 @@
 <hr />
 <div>Is user logged in? {{ loggedIn$ | async }}</div>
 <hr />
-<div class="row" *ngFor="let product of products | async">
-    Item {{ product.id }}: {{ product.name }} costs {{ product.cost | currency }} &nbsp;<button
-        class="btn btn-danger"
-        (click)="removeProduct(product.id)"
-    >
-        Remove
-    </button>
-</div>
-<ng-container *ngIf="(products | async).length != 0">
-    <hr />
-    <div>
-        <button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button>
-    </div>
-</ng-container>
-<div class="d-flex justify-content-lg-between flex-wrap align-content-between">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+<div class="d-flex justify-content-lg-between flex-wrap align-content-between mb-5">
+    <ng-container *ngFor="let product of products | async">
+        <app-product-card [product]="product"></app-product-card>
+    </ng-container>
 </div>

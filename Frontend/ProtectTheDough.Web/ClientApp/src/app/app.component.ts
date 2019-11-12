@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+import { environment } from '../environments/environment';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+    title = 'app';
+
+    constructor() {
+        console.log(environment.production);
+        console.log('API Url:', environment.backendUrl);
+    }
 }

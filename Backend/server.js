@@ -1,42 +1,38 @@
 import express from "express";
 import request from "request";
+const cors = require('cors');
 
+const bodyParser = require('body-parser');
+const assert = require('assert');
 const app= express.Application = express();
+app.use(bodyParser.json());
+const corsOptions = {
+    origin: 'https://localhost:5001/',
+    optionsSuccessStatus: 200
+};
+app.use(cors());
 const port = 3000;
-const mongo = require('mongodb').MongoClient
-const url = 'mongodb://localhost:27017'
 const LATEST_DATA_QUERY = {
   query: "db.getCollection('Catalog').find({})"
 };
 
-var db
-var collection1
-var collection2
-var MongoClient = require('mongodb').MongoClient;
-//mongo.connect(url, {
- //   useNewUrlParser: true,
- //   useUnifiedTopology: true
-//  }, (err, client) => {
+/**
+ * MongoDB Section
+ */
+const MongoClient = require('mongodb').MongoClient;
 
- // if (err) {
- //   console.error(err)
- //   return
- // }
-//  else{
-//    db = client.db('Protect-The-Dough')
-//    collection1 = db.collection('Catalog')
-//    collection2 = db.collection('Users')
-//    console.log("CONNECTED");
-   
-//  }
-  //...
-//})
-var dbo 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  dbo = db.db("Protect-The-Dough");
-});
+// Connection String
+const url = 'mongodb://localhost:27017';
 
+// Database name
+const dbName = 'ptd';
+
+// Create a new MongoClient
+const client = new MongoClient(url, {native_parser: true, useUnifiedTopology: true});
+
+/**
+ * CRUD Section
+ */
 function handleLatestData(req, res) {
   request.post(url, (error, _response, body) => {
     if (body) {
@@ -52,20 +48,44 @@ function handleLatestData(req, res) {
   }).json(LATEST_DATA_QUERY);
 }
 
-function GetCatalog(){
-  dbo.collection("Catalog").find().toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    db.close();
-  });
-}
-
-app.get("/latestData", handleLatestData);
 app.get("/", (req, res) => {
   res.send("hello world");
-  
 });
-app.get("/Catalog", GetCatalog);
+
+app.get("/catalog", (req, res) => {
+	// User connect method to connect to the Server
+	client.connect(function(err) {
+		var db = client.db(dbName);
+		db.collection('catalog').find().toArray(function(err, docs) {
+			if(typeof(docs !== undefined)) {
+				res.send(docs);
+			}
+		});
+	});
+});
+
+app.get("/users", (req, res) => {
+    client.connect(function(err) {
+        var db = client.db(dbName);
+        db.collection('users').find().toArray(function(err, docs) {
+            if(typeof(docs) !== undefined) {
+                res.send(docs);
+            }
+        })
+    })
+});
+
+app.post("/users", (req, res) => {
+    client.connect(function(err) {
+        var db = client.db(dbName);
+        db.collection('users').insertOne(req.body, function(err, r) {
+            assert.equal(null, err);
+            assert.equal(1, r.insertedCount);
+        });
+        res.status(201).send();
+    })
+});
+
 app.listen(port, err => {
   if (err) {
     return console.error(err);

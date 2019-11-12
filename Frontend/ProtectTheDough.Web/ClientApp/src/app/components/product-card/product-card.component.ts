@@ -13,17 +13,9 @@ export class ProductCardComponent implements OnInit {
 
     constructor(private productEvents: ProductEvents) {}
 
-    ngOnInit() {
-        this.counter = 0;
-    }
+    ngOnInit() {}
 
     addProduct() {
-        const tempProduct: Product = {
-            id: this.counter,
-            name: 'Temp Product',
-            cost: 4
-        };
-        this.counter += 1;
-        this.productEvents.AddProduct(tempProduct);
+        this.productEvents.AddProduct(this.product);
     }
 }

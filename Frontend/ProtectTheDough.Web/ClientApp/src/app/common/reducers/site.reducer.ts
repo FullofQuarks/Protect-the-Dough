@@ -29,7 +29,7 @@ export function siteReducer(
                     products: [
                         ...state.cart.products.filter(x => {
                             if (state.cart.id === action.payload.cartId) {
-                                return x.id !== action.payload.id;
+                                return x.CatalogID !== action.payload.id;
                             }
                         })
                     ],

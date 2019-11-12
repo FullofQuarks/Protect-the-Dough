@@ -2,51 +2,61 @@
     {
         "CatalogID" : 1,
         "Name" : "French Bread",
+        "Description" : "Long, thin loaf that is distinguishable by its length and crisp crust. Traditional bread of France.",
         "Price" : 4.00000000000000
     },
     {
         "CatalogID" : 2,
-        "Name" : "Cibatta",
+        "Name" : "Ciabatta",
+        "Description" : "Ciabatta is somewhat elongated, broad, and flat, and is baked in many variations. Our version is made from locally sourced wheat flour, olive oil, salt, yeast, and water.",
         "Price" : 4.00000000000000
     },
     {
         "CatalogID" : 3,
         "Name" : "Italian Bread",
+        "Description" : "Delicious loaf originating in Italy that is cruncy braid loaded with sesame seeds",
         "Price" : 3.00000000000000
     },
     {
         "CatalogID" : 4,
         "Name" : "Rye Bread",
+        "Description" : "Type of bread made with various proportions of flour from rye grain. Our rye bread is dark rye.",
         "Price" : 2.00000000000000
     },
     {
         "CatalogID" : 5,
         "Name" : "Banana Bread",
+        "Description" : "You must be absolutely bananas not to try our Banana bread! We grew them ourselves, and peel them just before baking.",
         "Price" : 5.00000000000000
     },
     {
         "CatalogID" : 6,
         "Name" : "Bagel",
+        "Description" : "Historically spelled beigel, it is shaped by hand into the form of a ring of yeasted wheat dough.",
         "Price" : 4.00000000000000
     },
     {
         "CatalogID" : 7,
         "Name" : "Sourdough Bread",
+        "Description" : "Made by the fermentation of dough using naturally occuring yeast. Has more of a sour taste, but even more of a following!",
         "Price" : 5.00000000000000
     },
     {
         "CatalogID" : 8,
         "Name" : "Cornbread",
+        "Description" : "Sweet, fluffy, and perfect for a cozy meal. This not-too-sweet recipe will blow your socks off!",
         "Price" : 7.00000000000000
     },
     {
         "CatalogID" : 9,
         "Name" : "Pumpernickel",
+        "Description" : "Heavy, slightly sweet rye bread, made with a sourdough starter and coarsely ground rye",
         "Price" : 1.50000000000000
     },
     {
         "CatalogID" : 10,
         "Name" : "Texas Toast",
+        "Description" : "Square toasted bread topped with melted butter and freshly-cut garlic. A cut above the rest!",
         "Price" : 6.50000000000000
     }
 ]

@@ -51,7 +51,7 @@ namespace ProtectTheDough.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action=Index}/{CatalogID?}");
             });
 
             app.UseSpa(spa =>

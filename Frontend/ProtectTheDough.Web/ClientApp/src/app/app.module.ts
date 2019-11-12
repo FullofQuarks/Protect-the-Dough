@@ -19,7 +19,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { RegisterComponent } from './components/register/register.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { ProductEvents } from '@common/events/product.events';
-import { InMemoryDataService } from '@common/services/in-memory-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserEvents } from '@common/events';
@@ -41,7 +40,6 @@ import { AppRoutingModule } from '@app/app.routing';
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         NgbModule,
         HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
         FormsModule,
         RouterModule.forRoot([
             { path: '', component: HomeComponent, pathMatch: 'full' },

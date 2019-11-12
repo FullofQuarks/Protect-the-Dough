@@ -15,7 +15,7 @@ export class AppEffects {
     private productAdded: Observable<Action> = this.actions$.pipe(
         ofType<AddProduct>(ProductActionTypes.AddProduct),
         switchMap((action: AddProduct) => {
-            this.toastr.success('Added to cart', action.payload.product.name);
+            this.toastr.success('Added to cart', action.payload.product.Name);
             return of(action);
         })
     );
