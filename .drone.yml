@@ -53,7 +53,7 @@ steps:
 - name: pack
   commands:
   - cd ./Frontend
-  - dotnet publish -c Release
+  - dotnet publish -c Production
 
 - name: clean
   commands:
@@ -62,7 +62,7 @@ steps:
 
 - name: publish
   commands:
-  - cp -r ./Frontend/ProtectTheDough.Web/bin/Release/netcoreapp3.0/publish/* /var/www/html/angular/
+  - cp -r ./Frontend/ProtectTheDough.Web/bin/Production/netcoreapp3.0/publish/* /var/www/html/angular/
 
 trigger:
   branch:
@@ -104,6 +104,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: b9873df20a39e215e8c0d5efee16ba3597f606766536c4ec0632a44219dac92b
+hmac: ecefba28353d873e5434b6d54f58b0a678b63fa83b540224c60c8d657df3fbef
 
 ...
