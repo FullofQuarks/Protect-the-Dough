@@ -94,7 +94,7 @@ steps:
 
 - name: run-container
   commands:
-  - docker run -d --name express-backend -p 3030:3000 nick/express-backend
+  - docker run -d --name express-backend -p 3030:3000 -e NODE_ENV=production nick/express-backend
 
 trigger:
   branch:
@@ -104,6 +104,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: 7055866d7a4789960bca300eb5da1659f454fee660c1171c0fb9cff38c5aa0b6
+hmac: b9873df20a39e215e8c0d5efee16ba3597f606766536c4ec0632a44219dac92b
 
 ...
