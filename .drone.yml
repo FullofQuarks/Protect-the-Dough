@@ -82,9 +82,12 @@ name: backend
 steps:
 - name: clean
   commands:
-  - docker container stop express-backend
-  - docker container rm express-backend
-  - docker image rm nick/express-backend --force
+  - echo $${PASS} | sudo -S docker container stop express-backend
+  - echo $${PASS} | sudo -S docker container rm express-backend
+  - echo $${PASS} | sudo -S docker image rm nick/express-backend --force
+  environment:
+    PASS:
+      from_secret: password
 
 - name: build-image
   commands:
