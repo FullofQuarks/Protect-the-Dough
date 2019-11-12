@@ -97,7 +97,6 @@ steps:
 - name: run-container
   commands:
   - docker run -d --name express-backend -p 3030:3000 nick/express-backend
-
   environment:
     PASS:
       from_secret: password
