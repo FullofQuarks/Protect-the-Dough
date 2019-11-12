@@ -82,6 +82,7 @@ name: backend
 steps:
 - name: clean
   commands:
+  - whoami
   - docker container stop express-backend
   - docker container rm express-backend
   - docker image rm nick/express-backend --force
