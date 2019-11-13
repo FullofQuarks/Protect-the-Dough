@@ -11,8 +11,8 @@ This is the Readme for the project.
     * In-depth description located in wiki.
     * Install the Redux Devtools extension for Chrome, located [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
     * **Important!** Please read [this](https://git.protectthedough.shop/nick/protect-the-dough/wiki/NgRx%3A-Angular-Redux) wiki article!
-* Backend: Not sure yet
-    * [Ruby](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one) - This looks to be what is preferred.
+* Backend
+    * ExpressJS
 * Database: [MongoDB](https://docs.mongodb.com/manual/introduction/)
 * CI/CD:
     * [Drone.io](https://drone.protectthedough.shop) - self-service, Continuous Delivery platform. Works with SSO, so sign into Gitea first.
