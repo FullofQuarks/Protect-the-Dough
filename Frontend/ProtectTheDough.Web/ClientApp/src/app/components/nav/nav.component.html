@@ -41,6 +41,7 @@
                 <a class="nav-link" href="#" (click)="logout()" *ngIf="loggedIn$ | async">Logout</a>
                 <!-- Show logout on navbar if the user is authenticated -->
             </li>
+            <a class="nav-link" href="/register" *ngIf="!(loggedIn$ | async)">Register</a>
             &nbsp;
             <li class="nav-item" *ngIf="products">
                 <span class="badge badge-secondary">Cart: {{ products.length }}</span>

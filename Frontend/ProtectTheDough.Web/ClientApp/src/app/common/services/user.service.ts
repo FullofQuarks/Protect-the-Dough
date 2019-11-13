@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '@common/models/product';
 import { User } from '@common/models/user';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsService {
+export class UserService {
     private apiUrl = 'api/products';
     // private fullUrl = environment.backendUrl + "catalog";
-    private fullUrl = environment.backendUrl + 'catalog';
+    private fullUrl = environment.backendUrl;
     constructor(private http: HttpClient) {}
 
     httpOptions = {
@@ -18,7 +17,13 @@ export class ProductsService {
             'Content-Type': 'application/json'
         })
     };
-    getAllProducts() {
-        return this.http.get<Product[]>(this.fullUrl, this.httpOptions);
+
+    getNumOfUsers() {
+        const url = environment.backendUrl + 'numofusers';
+        return this.http.get<User[]>(url, this.httpOptions);
+    }
+    addUser(user: User) {
+        const url = environment.backendUrl + 'users';
+        return this.http.post<User>(url, user, this.httpOptions);
     }
 }

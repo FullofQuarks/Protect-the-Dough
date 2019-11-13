@@ -1,24 +1,59 @@
 <form style="text-align: center;">
-  <div class="container">
-    <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr style="width:300px">
+    <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr style="width:300px" />
+        <!-- {{newUser.username}}
+    {{newUser.password}}
+    {{newUser.email}}
+    {{newUser.address}} -->
 
-    <label for="email"><b>Email</b></label><br />
-    <input type="text" placeholder=" Enter Email" name="email" required><br /><br />
+        <label for="username"><b>Username</b></label
+        ><br />
+        <input
+            type="text"
+            placeholder=" Enter Username"
+            name="username"
+            required
+            [(ngModel)]="newUser.username"
+        /><br /><br />
 
-    <label for="psw"><b>Password</b></label><br />
-    <input type="password" placeholder=" Enter Password" name="psw" required><br /><br />
+        <label for="psw"><b>Password</b></label
+        ><br />
+        <input
+            type="password"
+            placeholder=" Enter Password"
+            name="psw"
+            required
+            [(ngModel)]="newUser.password"
+        /><br /><br />
 
-    <label for="psw-repeat"><b>Repeat Password</b></label><br />
-    <input type="password" placeholder=" Repeat Password" name="psw-repeat" required><br />
-    <hr style="width:300px">
+        <label for="psw-repeat"><b>Repeat Password</b></label
+        ><br />
+        <input
+            type="password"
+            placeholder=" Repeat Password"
+            name="psw-repeat"
+            required
+            [(ngModel)]="repeatedPassword"
+        /><br /><br />
 
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
+        <label for="email"><b>Email</b></label
+        ><br />
+        <input type="text" placeholder=" Enter Email" name="email" required [(ngModel)]="newUser.email" /><br /><br />
 
-  <div class="container signin">
-      <!-- add routing to sign in page -->
-    <br /><p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
+        <label for="address"><b>Address</b></label
+        ><br />
+        <input type="text" placeholder=" Enter Address" name="address" required [(ngModel)]="newUser.address" /><br />
+
+        <hr style="width:300px" />
+
+        <button type="submit" class="registerbtn" (click)="Submit()">Register</button>
+    </div>
+
+    <div class="container signin">
+        <!-- add routing to sign in page -->
+        <br />
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+    </div>
 </form>
