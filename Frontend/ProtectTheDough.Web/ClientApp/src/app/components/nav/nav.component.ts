@@ -17,7 +17,7 @@ export class NavComponent implements OnInit, OnDestroy {
     constructor(private productEvents: ProductEvents, private userEvents: UserEvents) {}
 
     ngOnInit() {
-        this.products$ = this.productEvents.getProducts$.subscribe(x => {
+        this.products$ = this.productEvents.getCart$.subscribe(x => {
             this.products = x;
         });
         this.loggedIn$ = this.userEvents.isLoggedIn$;

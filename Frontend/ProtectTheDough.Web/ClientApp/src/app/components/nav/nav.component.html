@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-    <a class="navbar-brand" href="#">Protect the Dough</a>
+    <a class="navbar-brand" routerLink="/">Protect the Dough</a>
     <button
         class="navbar-toggler"
         type="button"
@@ -13,7 +13,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav w-100">
             <li class="nav-item active">
                 <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -35,15 +35,17 @@
                 <!-- Show login on navbar if the user is not authenticated -->
             </li>
             <li class="nav-item">
-                <a class="nav-link" rounterLink="/profile" *ngIf="loggedIn$ | async">Profile</a>
+                <a class="nav-link" routerLink="/profile" *ngIf="loggedIn$ | async">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" (click)="logout()" *ngIf="loggedIn$ | async">Logout</a>
                 <!-- Show logout on navbar if the user is authenticated -->
             </li>
-            <a class="nav-link" href="/register" *ngIf="!(loggedIn$ | async)">Register</a>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" *ngIf="!(loggedIn$ | async)">Register</a>
+          </li>
             &nbsp;
-            <li class="nav-item" *ngIf="products">
+            <li class="nav-item my-2 ml-auto" *ngIf="products" routerLink="/cart">
                 <span class="badge badge-secondary">Cart: {{ products.length }}</span>
             </li>
         </ul>

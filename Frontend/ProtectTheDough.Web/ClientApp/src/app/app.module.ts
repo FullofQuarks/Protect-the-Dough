@@ -26,10 +26,17 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserEffects } from '@common/effects/user.effects';
 import { AuthService } from '@common/services/auth/auth.service';
 import { AuthGuard } from '@common/guards/auth.guard';
+import { CartComponent } from '@app/components/cart/cart.component';
+import { CartProductComponent } from '@app/components/cart/cart-product/cart-product.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CartSubtotalComponent } from '@app/components/cart/cart-subtotal/cart-subtotal.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        CartComponent,
+        CartProductComponent,
+        CartSubtotalComponent,
         HomeComponent,
         NavComponent,
         ProductCardComponent,
@@ -41,6 +48,7 @@ import { AuthGuard } from '@common/guards/auth.guard';
     imports: [
         BrowserAnimationsModule,
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        FontAwesomeModule,
         NgbModule,
         HttpClientModule,
         FormsModule,

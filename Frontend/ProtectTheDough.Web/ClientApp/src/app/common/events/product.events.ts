@@ -4,12 +4,16 @@ import { Product } from '@common/models/product';
 import { AddProduct, LoadProducts, RemoveAllProducts, RemoveProduct } from '@common/actions/product.actions';
 import { State } from '@common/state';
 import { Observable } from 'rxjs';
-import { selectCartProducts, selectIsLoaded } from '@common/selectors';
+import { selectCart, selectCatalog, selectIsLoaded } from '@common/selectors';
 
 @Injectable()
 export class ProductEvents {
     get getProducts$(): Observable<Product[]> {
-        return this.store.pipe(select(selectCartProducts));
+        return this.store.pipe(select(selectCatalog));
+    }
+
+    get getCart$(): Observable<Product[]> {
+        return this.store.pipe(select(selectCart));
     }
 
     get isLoaded$(): Observable<boolean> {
@@ -26,8 +30,8 @@ export class ProductEvents {
         this.store.dispatch(new AddProduct({ product }));
     }
 
-    public RemoveProduct(cartId: number, id: number) {
-        this.store.dispatch(new RemoveProduct({ cartId, id }));
+    public RemoveProduct(product: Product) {
+        this.store.dispatch(new RemoveProduct({ product }));
     }
 
     public RemoveAllProducts(cartId: number) {

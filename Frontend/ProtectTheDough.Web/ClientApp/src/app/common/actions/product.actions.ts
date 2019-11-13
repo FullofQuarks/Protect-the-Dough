@@ -28,7 +28,7 @@ export class AddProduct implements Action {
 export class RemoveProduct implements Action {
     readonly type = ProductActionTypes.RemoveProduct;
 
-    constructor(public payload: { cartId: number; id: number }) {}
+    constructor(public payload: { product: Product }) {}
 }
 
 export class RemoveAllProducts implements Action {

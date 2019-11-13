@@ -23,16 +23,11 @@ export function siteReducer(
         }
 
         case ProductActionTypes.RemoveProduct: {
+            const index = state.cart.products.findIndex(prod => prod.CatalogID === action.payload.product.CatalogID);
             return {
                 ...state,
                 cart: {
-                    products: [
-                        ...state.cart.products.filter(x => {
-                            if (state.cart.id === action.payload.cartId) {
-                                return x.CatalogID !== action.payload.id;
-                            }
-                        })
-                    ],
+                    products: [...state.cart.products.filter((prod, idx) => idx !== index)],
                     id: state.cart.id
                 }
             };
@@ -53,9 +48,10 @@ export function siteReducer(
                 ...state,
                 loaded: true,
                 cart: {
-                    products: action.payload.products,
+                    products: [...state.cart.products],
                     id: state.cart.id
-                }
+                },
+                catalog: action.payload.products
             };
         }
 

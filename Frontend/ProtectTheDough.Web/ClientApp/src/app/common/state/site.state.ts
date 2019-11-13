@@ -7,6 +7,7 @@ export const productAdapter: EntityAdapter<Product> = createEntityAdapter<Produc
 export interface SiteState extends EntityState<Product> {
     loaded: boolean;
     cart: Cart;
+    catalog: Product[];
 }
 
 export const initialState: SiteState = productAdapter.getInitialState({
@@ -14,5 +15,6 @@ export const initialState: SiteState = productAdapter.getInitialState({
     cart: {
         id: 0,
         products: []
-    }
+    },
+    catalog: []
 });

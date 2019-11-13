@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductEvents } from '@common/events/product.events';
 import { Product } from '@common/models/product';
 import { UserEvents } from '@common/events';
-import { User } from '@common/models/user';
 
 @Component({
     selector: 'app-home',
@@ -19,19 +18,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.products = this.productEvents.getProducts$;
-        this.productEvents.isLoaded$.subscribe((loaded: boolean) => {
-            if (loaded === false) {
-                this.productEvents.LoadProducts();
-            }
-        });
         this.loggedIn$ = this.userEvents.isLoggedIn$;
-    }
-
-    removeProduct(id: number) {
-        this.productEvents.RemoveProduct(0, id);
-    }
-
-    emptyCart() {
-        this.productEvents.RemoveAllProducts(0);
     }
 }
