@@ -20,9 +20,6 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/about">About</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/shop">Shop</a>
-            </li>
             <li class="nav-item" ngbDropdown>
                 <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
                     Bread Categories
@@ -34,15 +31,20 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Good bread for low prices!</a>
+                <a class="nav-link" href="#" (click)="login()" *ngIf="!(loggedIn$ | async)">Login</a>
+                <!-- Show login on navbar if the user is not authenticated -->
             </li>
+            <li class="nav-item">
+                <a class="nav-link" rounterLink="/profile" *ngIf="loggedIn$ | async">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" (click)="logout()" *ngIf="loggedIn$ | async">Logout</a>
+                <!-- Show logout on navbar if the user is authenticated -->
+            </li>
+            &nbsp;
             <li class="nav-item" *ngIf="products">
                 <span class="badge badge-secondary">Cart: {{ products.length }}</span>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>

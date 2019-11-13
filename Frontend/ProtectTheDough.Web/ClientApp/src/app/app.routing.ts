@@ -1,8 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '@app/components/home/home.component';
 import { AboutComponent } from '@app/about/about.component';
+import { ProfileComponent } from '@app/components/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { ProductGuard } from '@common/guards/product.guard';
+import { AuthGuard } from '@common/guards/auth.guard';
+import { UserInfoComponent } from '@app/components/user-info/user-info.component';
+import { RegisterComponent } from '@app/components/register/register.component';
 
 const appRoutes: Routes = [
     {
@@ -12,6 +16,9 @@ const appRoutes: Routes = [
             { path: '', component: HomeComponent, pathMatch: 'full' },
             { path: 'home', component: HomeComponent, pathMatch: 'full' },
             { path: 'about', component: AboutComponent, pathMatch: 'full' },
+            { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], pathMatch: 'full' },
+            { path: 'register', component: RegisterComponent, pathMatch: 'full' },
+            { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' }
         ]
     }
 ];

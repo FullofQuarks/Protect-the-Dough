@@ -29,7 +29,7 @@ if (NODE_ENV !== 'production') {
     corsOptions = {
         origin: false
     };
-    app.use(cors(corsOptions));
+    app.use(cors());
     url = 'mongodb://localhost:27017';
 } else {
     url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;

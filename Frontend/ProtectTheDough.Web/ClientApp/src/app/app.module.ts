@@ -2,9 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -24,6 +22,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserEvents } from '@common/events';
 import { ProductEffects } from '@common/effects/product.effects';
 import { AppRoutingModule } from '@app/app.routing';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserEffects } from '@common/effects/user.effects';
+import { AuthService } from '@common/services/auth/auth.service';
+import { AuthGuard } from '@common/guards/auth.guard';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,8 @@ import { AppRoutingModule } from '@app/app.routing';
         ProductCardComponent,
         AboutComponent,
         RegisterComponent,
-        UserInfoComponent
+        UserInfoComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -41,16 +44,9 @@ import { AppRoutingModule } from '@app/app.routing';
         NgbModule,
         HttpClientModule,
         FormsModule,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'home', component: HomeComponent, pathMatch: 'full' },
-            { path: 'about', component: AboutComponent, pathMatch: 'full' },
-            { path: 'register', component: RegisterComponent, pathMatch: 'full' },
-            { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' }
-        ]),
         EffectsModule.forRoot([AppEffects]),
         AppRoutingModule,
-        EffectsModule.forRoot([AppEffects, ProductEffects]),
+        EffectsModule.forRoot([AppEffects, ProductEffects, UserEffects]),
         StoreModule.forRoot(reducers, {
             metaReducers,
             runtimeChecks: {
@@ -65,7 +61,7 @@ import { AppRoutingModule } from '@app/app.routing';
         }),
         ToastrModule.forRoot()
     ],
-    providers: [ProductEvents, UserEvents],
+    providers: [ProductEvents, UserEvents, AuthService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
