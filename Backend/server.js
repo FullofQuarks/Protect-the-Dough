@@ -6,10 +6,6 @@ const bodyParser = require("body-parser");
 const assert = require("assert");
 const app = (express.Application = express());
 app.use(bodyParser.json());
-const corsOptions = {
-  origin: "https://localhost:5001/",
-  optionsSuccessStatus: 200
-};
 app.use(cors());
 const port = 3000;
 
@@ -89,6 +85,18 @@ app.post("/users", (req, res) => {
     });
     res.status(201).send();
   });
+  
+app.get("/numofusers", (req, res) => {
+    client.connect(function(err) {
+        assert.equal(err, null);
+        var db = client.db(dbName);
+        db.collection('users').find().toArray(function(err, docs) {
+            if(typeof(docs) !== undefined) {
+                console.log(docs.length);
+                res.send(docs.length.toString());
+            }
+        })
+    })
 });
 
 app.get("/userinfo/:userid", (req, res) => {

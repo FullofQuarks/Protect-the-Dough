@@ -73,6 +73,7 @@ export class AuthService {
             // Call method to log in
             client.loginWithRedirect({
                 redirect_uri: `${window.location.origin}`,
+                // redirect_uri: `http://localhost:4200`,
                 // redirect_uri: 'https://protectthedough.shop',
                 appState: { target: redirectPath }
             });

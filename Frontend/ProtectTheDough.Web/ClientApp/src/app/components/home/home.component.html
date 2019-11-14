@@ -1,6 +1,6 @@
 <h1 class="text-center">Protect the Dough</h1>
 <hr />
-<div>Is user logged in? {{ loggedIn$ | async }}</div>
+<div class="alert alert-success" *ngIf="auth.loggedIn">Login Successful</div>
 <hr />
 <div class="d-flex justify-content-lg-between flex-wrap align-content-between mb-5">
     <ng-container *ngFor="let product of products | async">

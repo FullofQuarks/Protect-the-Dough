@@ -3,6 +3,7 @@ import { Product } from '@common/models/product';
 import { Subscription } from 'rxjs';
 import { ProductEvents } from '@common/events/product.events';
 import { UserEvents } from '@common/events';
+import { AuthService } from '@common/services/auth/auth.service';
 
 @Component({
     selector: 'app-nav',
@@ -14,7 +15,7 @@ export class NavComponent implements OnInit, OnDestroy {
     loggedIn$;
     products: Product[];
 
-    constructor(private productEvents: ProductEvents, private userEvents: UserEvents) {}
+    constructor(private productEvents: ProductEvents, private userEvents: UserEvents, public auth: AuthService) {}
 
     ngOnInit() {
         this.products$ = this.productEvents.getCart$.subscribe(x => {

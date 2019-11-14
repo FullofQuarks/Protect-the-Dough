@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { ProductEvents } from '@common/events/product.events';
 import { Product } from '@common/models/product';
 import { UserEvents } from '@common/events';
+import { User } from '@common/models/user';
+import { AuthService } from '@common/services/auth/auth.service';
 
 @Component({
     selector: 'app-home',
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
     public isSiteLoaded$: Observable<boolean>;
     public loggedIn$: Observable<boolean>;
 
-    constructor(private productEvents: ProductEvents, private userEvents: UserEvents) {}
+    constructor(private productEvents: ProductEvents, private userEvents: UserEvents, public auth: AuthService) {}
 
     ngOnInit() {
         this.products = this.productEvents.getProducts$;
