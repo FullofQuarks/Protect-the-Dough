@@ -82,14 +82,15 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/users", (req, res) => {
-  client.connect(function(err) {
+  client.connect(function (err) {
     var db = client.db(dbName);
-    db.collection("users").insertOne(req.body, function(err, r) {
+    db.collection("users").insertOne(req.body, function (err, r) {
       assert.equal(null, err);
       assert.equal(1, r.insertedCount);
     });
     res.status(201).send();
   });
+});
   
 app.get("/numofusers", (req, res) => {
     client.connect(function (err) {
@@ -123,35 +124,37 @@ app.get("/userinfo/:userid", (req, res) => {
 });
 
 app.post("/updateuser/:userid", (req, res) => {
-  client.connect(function(err) {
+  client.connect(function (err) {
     assert.equal(err, null);
     var db = client.db(dbName);
     var id = parseInt(req.params.userid);
     console.log("Called! UserID = " + id);
     console.log(req.body);
     var userInfo = db.collection("users").updateOne(
-      { userID: id },
-      {
-        $set: {
-          userID: req.body.userID,
-          username: req.body.username,
-          password: req.body.password,
-          email: req.body.email,
-          address: req.body.address
+        {userID: id},
+        {
+          $set: {
+            userID: req.body.userID,
+            username: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            address: req.body.address
+          }
+        },
+        function (err, result) {
+          //assert.equal(null, err);
+          //assert.equal(1, r.insertedCount);
+          if (err) {
+            //console.log(err);
+          } else {
+            //console.log(result);
+          }
         }
-      },
-      function(err, result) {
-        //assert.equal(null, err);
-        //assert.equal(1, r.insertedCount);
-        if (err) {
-          //console.log(err);
-        } else {
-          //console.log(result);
-        }
-      }
     );
     res.status(201).send();
   });
+});
+
 app.post("/users", (req, res) => {
     client.connect(function (err) {
         var db = client.db(dbName);
