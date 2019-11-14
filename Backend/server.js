@@ -6,10 +6,6 @@ const bodyParser = require('body-parser');
 const assert = require('assert');
 const app= express.Application = express();
 app.use(bodyParser.json());
-const corsOptions = {
-    origin: 'https://localhost:5001/',
-    optionsSuccessStatus: 200
-};
 app.use(cors());
 const port = 3000;
 
@@ -23,14 +19,25 @@ let url = '';
 const user = 'pitnicky';
 const password = 'protectthedough';
 const authMechanism = 'SCRAM-SHA-1';
-//process.env.NODE_ENV
-const NODE_ENV = 'production';
+
+const NODE_ENV = process.env.NODE_ENV;
+var corsOptions;
 if (NODE_ENV !== 'production') {
-    url = 'mongodb://localhost:27017';
-}
-else {
+    corsOptions = {
+        origin: false
+    };
+    app.use(cors(corsOptions));
+    // url = 'mongodb://localhost:27017';
+    url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
+
+} else {
     url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
     console.log(url);
+    corsOptions = {
+        origin: 'https://protectthedough.shop',
+        optionsSuccessStatus: 200
+    };
+    app.use(cors(corsOptions));
 }
 console.log('Environment is:', NODE_ENV);
 console.log('Connection string is:', url);
@@ -46,20 +53,20 @@ const client = new MongoClient(url, {native_parser: true, useUnifiedTopology: tr
  */
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+    res.send("hello world");
 });
 
 app.get("/catalog", (req, res) => {
-	// User connect method to connect to the Server
-	client.connect(function(err) {
-	    assert.equal(err, null);
-		var db = client.db(dbName);
-		db.collection('catalog').find().toArray(function(err, docs) {
-			if(typeof(docs !== undefined)) {
-				res.send(docs);
-			}
-		});
-	});
+    // User connect method to connect to the Server
+    client.connect(function(err) {
+        assert.equal(err, null);
+        var db = client.db(dbName);
+        db.collection('catalog').find().toArray(function(err, docs) {
+            if(typeof(docs !== undefined)) {
+                res.send(docs);
+            }
+        });
+    });
 });
 
 app.get("/users", (req, res) => {
@@ -80,7 +87,7 @@ app.get("/numofusers", (req, res) => {
         var db = client.db(dbName);
         db.collection('users').find().toArray(function(err, docs) {
             if(typeof(docs) !== undefined) {
-		console.log(docs.length);
+                console.log(docs.length);
                 res.send(docs.length.toString());
             }
         })
@@ -100,8 +107,8 @@ app.post("/users", (req, res) => {
 });
 
 app.listen(port, err => {
-  if (err) {
-    return console.error(err);
-  }
-  return console.log(`server is listening on port ${port}`);
+    if (err) {
+        return console.error(err);
+    }
+    return console.log(`server is listening on port ${port}`);
 });
