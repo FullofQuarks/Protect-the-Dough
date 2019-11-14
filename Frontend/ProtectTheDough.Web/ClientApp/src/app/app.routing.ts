@@ -21,7 +21,7 @@ const appRoutes: Routes = [
             { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], pathMatch: 'full' },
             { path: 'register', component: RegisterComponent, pathMatch: 'full' },
             { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
-            { path: 'cart', component: CartComponent, pathMatch: 'full' }
+            { path: 'cart', component: CartComponent, pathMatch: 'full' },
             { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
             { path: 'login', component: LoginComponent, pathMatch: 'full' }
         ]

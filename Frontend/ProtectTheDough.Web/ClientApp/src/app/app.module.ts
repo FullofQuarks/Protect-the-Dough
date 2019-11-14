@@ -27,9 +27,10 @@ import { UserEffects } from '@common/effects/user.effects';
 import { AuthService } from '@common/services/auth/auth.service';
 import { AuthGuard } from '@common/guards/auth.guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LoginComponent } from './components/login/login.component';
 import { CartSubtotalComponent } from '@app/components/cart/cart-subtotal/cart-subtotal.component';
 import { LoginComponent } from '@app/components/login/login.component';
+import { CartComponent } from '@app/components/cart/cart.component';
+import { CartProductComponent } from '@app/components/cart/cart-product/cart-product.component';
 
 @NgModule({
     declarations: [
