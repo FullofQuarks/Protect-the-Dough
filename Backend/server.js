@@ -1,12 +1,11 @@
 import express from "express";
 import request from "request";
-const cors = require("cors");
 
-const bodyParser = require("body-parser");
-const assert = require("assert");
-const app = (express.Application = express());
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const assert = require('assert');
+const app = express.Application = express();
 app.use(bodyParser.json());
-app.use(cors());
 const port = 3000;
 
 /**
@@ -20,15 +19,25 @@ const user = "pitnicky";
 const password = "protectthedough";
 const authMechanism = "SCRAM-SHA-1";
 //process.env.NODE_ENV
-const NODE_ENV = "production";
-if (NODE_ENV !== "production") {
-  url = "mongodb://localhost:27017";
+const NODE_ENV = 'production';
+if (NODE_ENV !== 'production') {
+    const corsOptions = {
+        origin: '*',
+        optionsSuccessStatus: 200
+    };
+    app.use(cors(corsOptions));
+    url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
 } else {
-  url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
-  console.log(url);
+    const corsOptions = {
+        origin: 'https://protectthedough.shop',
+        optionsSuccessStatus: 200
+    };
+    url = `mongodb://${user}:${password}@db.protectthedough.shop/?authMechanism=${authMechanism}&authSource=ptd`;
+    app.use(cors(corsOptions));
+    console.log(url);
 }
-console.log("Environment is:", NODE_ENV);
-console.log("Connection string is:", url);
+console.log('Environment is:', NODE_ENV);
+console.log('Connection string is:', url);
 
 // Database name
 const dbName = "ptd";
@@ -48,32 +57,28 @@ app.get("/", (req, res) => {
 });
 
 app.get("/catalog", (req, res) => {
-  // User connect method to connect to the Server
-  client.connect(function(err) {
-    assert.equal(err, null);
-    var db = client.db(dbName);
-    db.collection("catalog")
-      .find()
-      .toArray(function(err, docs) {
-        if (typeof (docs !== undefined)) {
-          res.send(docs);
-        }
-      });
-  });
+    // User connect method to connect to the Server
+    client.connect(function (err) {
+        assert.equal(err, null);
+        var db = client.db(dbName);
+        db.collection('catalog').find().toArray(function (err, docs) {
+            if (typeof (docs !== undefined)) {
+                res.send(docs);
+            }
+        });
+    });
 });
 
 app.get("/users", (req, res) => {
-  client.connect(function(err) {
-    assert.equal(err, null);
-    var db = client.db(dbName);
-    db.collection("users")
-      .find()
-      .toArray(function(err, docs) {
-        if (typeof docs !== undefined) {
-          res.send(docs);
-        }
-      });
-  });
+    client.connect(function (err) {
+        assert.equal(err, null);
+        var db = client.db(dbName);
+        db.collection('users').find().toArray(function (err, docs) {
+            if (typeof (docs) !== undefined) {
+                res.send(docs);
+            }
+        })
+    })
 });
 
 app.post("/users", (req, res) => {
@@ -87,11 +92,11 @@ app.post("/users", (req, res) => {
   });
   
 app.get("/numofusers", (req, res) => {
-    client.connect(function(err) {
+    client.connect(function (err) {
         assert.equal(err, null);
         var db = client.db(dbName);
-        db.collection('users').find().toArray(function(err, docs) {
-            if(typeof(docs) !== undefined) {
+        db.collection('users').find().toArray(function (err, docs) {
+            if (typeof (docs) !== undefined) {
                 console.log(docs.length);
                 res.send(docs.length.toString());
             }
@@ -147,6 +152,15 @@ app.post("/updateuser/:userid", (req, res) => {
     );
     res.status(201).send();
   });
+app.post("/users", (req, res) => {
+    client.connect(function (err) {
+        var db = client.db(dbName);
+        db.collection('users').insertOne(req.body, function (err, r) {
+            assert.equal(null, err);
+            assert.equal(1, r.insertedCount);
+        });
+        res.status(201).send();
+    })
 });
 
 app.get("/numofusers", (req, res) => {
