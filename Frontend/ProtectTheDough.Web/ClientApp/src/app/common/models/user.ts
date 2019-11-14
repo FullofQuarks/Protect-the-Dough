@@ -14,8 +14,3 @@ export class User {
         isLoggedIn: boolean
     ) {}
 }
-
-export class UserId {
-    id: number;
-    constructor(id: number) {}
-}

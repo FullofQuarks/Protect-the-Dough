@@ -7,7 +7,6 @@ import { ProductGuard } from '@common/guards/product.guard';
 import { AuthGuard } from '@common/guards/auth.guard';
 import { UserInfoComponent } from '@app/components/user-info/user-info.component';
 import { RegisterComponent } from '@app/components/register/register.component';
-import { LoginComponent } from '@app/components/login/login.component';
 import { CartComponent } from '@app/components/cart/cart.component';
 
 const appRoutes: Routes = [
@@ -22,8 +21,6 @@ const appRoutes: Routes = [
             { path: 'register', component: RegisterComponent, pathMatch: 'full' },
             { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
             { path: 'cart', component: CartComponent, pathMatch: 'full' }
-            { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
-            { path: 'login', component: LoginComponent, pathMatch: 'full' }
         ]
     }
 ];

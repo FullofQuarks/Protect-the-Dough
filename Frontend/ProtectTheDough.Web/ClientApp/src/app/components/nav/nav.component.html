@@ -41,9 +41,9 @@
                 <a class="nav-link" href="#" (click)="logout()" *ngIf="loggedIn$ | async">Logout</a>
                 <!-- Show logout on navbar if the user is authenticated -->
             </li>
-            <a class="nav-link" href="/register" *ngIf="!(loggedIn$ | async)">Register</a>
-            <a class="nav-link" href="/userinfo" *ngIf="!(loggedIn$ | async)">User Info</a>
-            <a class="nav-link" href="/login" *ngIf="!(loggedIn$ | async)">Login2</a>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" *ngIf="!(loggedIn$ | async)">Register</a>
+          </li>
             &nbsp;
             <li class="nav-item my-2 ml-auto" *ngIf="products" routerLink="/cart">
                 <span class="badge badge-secondary">Cart: {{ products.length }}</span>

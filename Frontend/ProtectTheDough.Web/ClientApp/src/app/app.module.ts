@@ -26,8 +26,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserEffects } from '@common/effects/user.effects';
 import { AuthService } from '@common/services/auth/auth.service';
 import { AuthGuard } from '@common/guards/auth.guard';
+import { CartComponent } from '@app/components/cart/cart.component';
+import { CartProductComponent } from '@app/components/cart/cart-product/cart-product.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LoginComponent } from './components/login/login.component';
+import { CartSubtotalComponent } from '@app/components/cart/cart-subtotal/cart-subtotal.component';
 
 @NgModule({
     declarations: [
@@ -41,8 +43,7 @@ import { LoginComponent } from './components/login/login.component';
         AboutComponent,
         RegisterComponent,
         UserInfoComponent,
-        ProfileComponent,
-        LoginComponent
+        ProfileComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -66,8 +67,7 @@ import { LoginComponent } from './components/login/login.component';
             logOnly: environment.production,
             serialize: true
         }),
-        ToastrModule.forRoot(),
-        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+        ToastrModule.forRoot()
     ],
     providers: [ProductEvents, UserEvents, AuthService, AuthGuard],
     bootstrap: [AppComponent]

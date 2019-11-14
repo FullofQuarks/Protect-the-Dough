@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User, UserId } from '@common/models/user';
+import { User } from '@common/models/user';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -18,25 +18,12 @@ export class UserService {
         })
     };
 
-    addUser(user: User) {
-        const url = environment.backendUrl + 'users';
-        return this.http.post<User>(url, user, this.httpOptions);
-    }
-
-    updateUser(user: User) {
-        const url = environment.backendUrl + 'updateuser/' + user.userID;
-        return this.http.post<User>(url, user, this.httpOptions);
-    }
-
     getNumOfUsers() {
         const url = environment.backendUrl + 'numofusers';
         return this.http.get<User[]>(url, this.httpOptions);
     }
-
-    getUserInfo(userInfo: number) {
-        const url = environment.backendUrl + 'userinfo/' + userInfo;
-        let userJSON: UserId = new UserId(userInfo);
-        console.log(JSON.parse(userInfo.toString()));
-        return this.http.get<UserId>(url, this.httpOptions);
+    addUser(user: User) {
+        const url = environment.backendUrl + 'users';
+        return this.http.post<User>(url, user, this.httpOptions);
     }
 }
