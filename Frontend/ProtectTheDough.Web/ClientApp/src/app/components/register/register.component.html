@@ -1,63 +1,122 @@
-<form style="text-align: center;">
-    <div class="container">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr style="width:300px" />
-        <!-- {{newUser.username}}
-    {{newUser.password}}
-    {{newUser.email}}
-    {{newUser.address}} -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="border-0 bg-light">
+                                <form style="text-align: center;">
+                                    <div class="container">
+                                        <h1>Register</h1>
+                                        <p>Please fill in this form to create an account.</p>
+                                        <hr style="width:300px" />
+                                        <!-- {{newUser.username}}
+                                                {{newUser.password}}
+                                                {{newUser.email}}
+                                                {{newUser.address}} -->
 
-        <label for="username"><b>Username</b></label
-        ><br />
-        <input
-            type="text"
-            placeholder=" Enter Username"
-            name="username"
-            required
-            [(ngModel)]="newUser.username"
-        /><br /><br />
+                                        <label for="username"><b>Username</b></label
+                                        ><br />
+                                        <input
+                                            type="text"
+                                            placeholder=" Enter Username"
+                                            name="username"
+                                            required
+                                            [(ngModel)]="newUser.username"
+                                        /><br /><br />
 
-        <label for="psw"><b>Password</b></label
-        ><br />
-        <input
-            type="password"
-            placeholder=" Enter Password"
-            name="psw"
-            required
-            [(ngModel)]="newUser.password"
-        /><br /><br />
+                                        <label for="psw"><b>Password</b></label
+                                        ><br />
+                                        <input
+                                            type="password"
+                                            placeholder=" Enter Password"
+                                            name="psw"
+                                            required
+                                            [(ngModel)]="newUser.password"
+                                        /><br /><br />
 
-        <label for="psw-repeat"><b>Repeat Password</b></label
-        ><br />
-        <input
-            type="password"
-            placeholder=" Repeat Password"
-            name="psw-repeat"
-            required
-            [(ngModel)]="repeatedPassword"
-        /><br /><br />
+                                        <label for="psw-repeat"><b>Repeat Password</b></label
+                                        ><br />
+                                        <input
+                                            type="password"
+                                            placeholder=" Repeat Password"
+                                            name="psw-repeat"
+                                            required
+                                            [(ngModel)]="repeatedPassword"
+                                        /><br /><br />
 
-        <label for="email"><b>Email</b></label
-        ><br />
-        <input type="text" placeholder=" Enter Email" name="email" required [(ngModel)]="newUser.email" /><br /><br />
+                                        <label for="email"><b>Email</b></label
+                                        ><br />
+                                        <input
+                                            type="text"
+                                            placeholder=" Enter Email"
+                                            name="email"
+                                            required
+                                            [(ngModel)]="newUser.email"
+                                        /><br /><br />
 
-        <label><b>Address</b></label>
-        <br />
-        <input type="text" placeholder=" Enter Street Number" name="streetnumber" required [(ngModel)]="StreetNumber" />
-        <input type="text" placeholder=" Enter Street Name" name="streetname" required [(ngModel)]="StreetName" /><br />
-        <input type="text" placeholder=" Enter City" name="city" required [(ngModel)]="City" />
-        <input type="text" placeholder=" Enter State" name="State" required [(ngModel)]="State" /><br />
-        <input type="text" placeholder=" Enter Zip Code" name="ZipCode" required [(ngModel)]="ZipCode" /><br />
+                                        <label><b>Address</b></label>
+                                        <br />
+                                        <input
+                                            class="input"
+                                            type="text"
+                                            placeholder=" Enter Street Number"
+                                            name="streetnumber"
+                                            required
+                                            [(ngModel)]="StreetNumber"
+                                        />
+                                        <input
+                                            class="input"
+                                            type="text"
+                                            placeholder=" Enter Street Name"
+                                            name="streetname"
+                                            required
+                                            [(ngModel)]="StreetName"
+                                        /><br />
+                                        <input
+                                            class="input"
+                                            type="text"
+                                            placeholder=" Enter City"
+                                            name="city"
+                                            required
+                                            [(ngModel)]="City"
+                                        />
+                                        <input
+                                            class="input"
+                                            type="text"
+                                            placeholder=" Enter State"
+                                            name="State"
+                                            required
+                                            [(ngModel)]="State"
+                                        /><br />
+                                        <input
+                                            class="input"
+                                            type="text"
+                                            placeholder=" Enter Zip Code"
+                                            name="ZipCode"
+                                            required
+                                            [(ngModel)]="ZipCode"
+                                        /><br />
 
-        <hr style="width:300px" />
+                                        <hr style="width:300px" />
 
-        <button type="submit" class="registerbtn" (click)="Submit()">Register</button>
+                                        <button type="submit" class="btn1 btn-primary1" (click)="Submit()">
+                                            Register
+                                        </button>
+                                    </div>
+
+                                    <div class="container signin">
+                                        <!-- add routing to sign in page -->
+                                        <br />
+                                        <p>Already have an account? <a href="/login">Sign in</a>.</p>
+                                    </div>
+                                </form>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div>
-
-    <div class="container signin">
-        <!-- add routing to sign in page -->
-        <br />
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
-    </div>
-</form>
+</div>

@@ -53,7 +53,7 @@ const client = new MongoClient(url, {
  */
 
 app.get("/", (req, res) => {
-    res.send("hello world");
+  res.send("hello world");
 });
 
 app.get("/catalog", (req, res) => {
@@ -193,8 +193,8 @@ app.post("/updateuser", (req, res) => {
 });
 
 app.listen(port, err => {
-    if (err) {
-        return console.error(err);
-    }
-    return console.log(`server is listening on port ${port}`);
+  if (err) {
+    return console.error(err);
+  }
+  return console.log(`server is listening on port ${port}`);
 });

@@ -35,8 +35,6 @@ export class UserService {
 
     getUserInfo(userInfo: number) {
         const url = environment.backendUrl + 'userinfo/' + userInfo;
-        const userJSON: UserId = new UserId(userInfo);
-        console.log(JSON.parse(userInfo.toString()));
         return this.http.get<UserId>(url, this.httpOptions);
     }
 }
