@@ -28,6 +28,11 @@ export class UserService {
         return this.http.post<User>(url, user, this.httpOptions);
     }
 
+    authenticate(user: User) {
+        const url = environment.backendUrl + 'authenticate/' + user.userID;
+        return this.http.get<User>(url, this.httpOptions);
+    }
+
     getNumOfUsers() {
         const url = environment.backendUrl + 'numofusers';
         return this.http.get<User[]>(url, this.httpOptions);
