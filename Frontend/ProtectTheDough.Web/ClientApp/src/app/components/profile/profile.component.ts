@@ -8,8 +8,12 @@ import { AuthService } from '@common/services/auth/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  profile: any;
 
+  constructor(public auth: AuthService) {
+      this.profile = JSON.parse(localStorage.getItem('profile'));
+      console.log(this.profile);
+  }
   ngOnInit() {
   }
 
