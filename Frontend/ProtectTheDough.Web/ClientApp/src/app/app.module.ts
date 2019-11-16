@@ -31,6 +31,9 @@ import { CartSubtotalComponent } from '@app/components/cart/cart-subtotal/cart-s
 import { LoginComponent } from '@app/components/login/login.component';
 import { CartComponent } from '@app/components/cart/cart.component';
 import { CartProductComponent } from '@app/components/cart/cart-product/cart-product.component';
+import { CheckoutComponent } from '@app/components/checkout/checkout.component';
+import { Module as StripeModule } from 'stripe-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -38,6 +41,7 @@ import { CartProductComponent } from '@app/components/cart/cart-product/cart-pro
         CartComponent,
         CartProductComponent,
         CartSubtotalComponent,
+        CheckoutComponent,
         HomeComponent,
         NavComponent,
         ProductCardComponent,
@@ -57,6 +61,7 @@ import { CartProductComponent } from '@app/components/cart/cart-product/cart-pro
         EffectsModule.forRoot([AppEffects]),
         AppRoutingModule,
         EffectsModule.forRoot([AppEffects, ProductEffects, UserEffects]),
+        ReactiveFormsModule,
         StoreModule.forRoot(reducers, {
             metaReducers,
             runtimeChecks: {
@@ -69,6 +74,7 @@ import { CartProductComponent } from '@app/components/cart/cart-product/cart-pro
             logOnly: environment.production,
             serialize: true
         }),
+        StripeModule.forRoot(),
         ToastrModule.forRoot(),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
     ],

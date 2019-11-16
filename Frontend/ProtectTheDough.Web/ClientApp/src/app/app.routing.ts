@@ -9,6 +9,7 @@ import { UserInfoComponent } from '@app/components/user-info/user-info.component
 import { RegisterComponent } from '@app/components/register/register.component';
 import { LoginComponent } from '@app/components/login/login.component';
 import { CartComponent } from '@app/components/cart/cart.component';
+import { CheckoutComponent } from '@app/components/checkout/checkout.component';
 
 const appRoutes: Routes = [
     {
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
             { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
             { path: 'cart', component: CartComponent, pathMatch: 'full' },
             { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
-            { path: 'login', component: LoginComponent, pathMatch: 'full' }
+            { path: 'login', component: LoginComponent, pathMatch: 'full' },
+            { path: 'checkout', component: CheckoutComponent, pathMatch: 'full' }
         ]
     }
 ];

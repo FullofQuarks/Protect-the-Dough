@@ -23,6 +23,7 @@
         <Content Include="ClientApp\src\app\components\cart\cart-product\cart-product.component.html" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+        <None Include="ClientApp\src\app\common\models\ProductSku.ts" />
     </ItemGroup>
 
     <ItemGroup>
