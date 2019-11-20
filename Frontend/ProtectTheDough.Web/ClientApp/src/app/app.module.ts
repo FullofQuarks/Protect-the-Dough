@@ -34,6 +34,7 @@ import { CartProductComponent } from '@app/components/cart/cart-product/cart-pro
 import { CheckoutComponent } from '@app/components/checkout/checkout.component';
 import { Module as StripeModule } from 'stripe-angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileMfaComponent } from './components/profile/profile-mfa/profile-mfa.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         RegisterComponent,
         UserInfoComponent,
         ProfileComponent,
-        LoginComponent
+        LoginComponent,
+        ProfileMfaComponent
     ],
     imports: [
         BrowserAnimationsModule,
