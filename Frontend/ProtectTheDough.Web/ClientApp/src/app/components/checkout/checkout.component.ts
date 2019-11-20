@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { StripeSource, StripeToken } from 'stripe-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Product } from '@common/models/product';
+import {mapProductToProductDto, Product} from '@common/models/product';
 import { ProductEvents } from '@common/events';
-import { map } from 'rxjs/operators';
 import { ProductSku } from '@common/models/ProductSku';
+import { CheckoutService } from '@common/services/checkout.service';
 
 @Component({
     selector: 'app-checkout',
@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     private products$;
 
     public invalidError: any;
-    constructor(private productEvents: ProductEvents) {}
+    constructor(private productEvents: ProductEvents, private checkout: CheckoutService) {}
 
     ngOnInit() {
         this.products$ = this.productEvents.getCart$.subscribe(x => (this.cartProducts = x));
@@ -37,16 +37,19 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
     payWithStripe() {
         this.cartSkus = this.cartProducts.map(x => ({ sku: x.sku, quantity: 1 }));
-        this.checkoutRedirect().then(x => {
-            console.log('Promise returned: ', x);
-        });
+        this.checkoutRedirect();
     }
 
-    async checkoutRedirect() {
-        const { error } = await this.stripe.redirectToCheckout({
-            items: this.cartSkus,
-            successUrl: 'https://protectthedough.shop',
-            cancelUrl: 'https://protectthedoughs.hop'
+    checkoutRedirect() {
+      const productDtos = this.cartProducts.map(mapProductToProductDto);
+        this.checkout.startCheckout(productDtos).subscribe(sessionId => {
+            console.log('Session ID:', sessionId);
+            this.stripe.redirectToCheckout({
+                sessionId: sessionId
+                // items: this.cartSkus,
+                // successUrl: 'https://protectthedough.shop/session_id={CHECKOUT_SESSION_ID}',
+                // cancelUrl: 'https://protectthedoughs.hop'
+            });
         });
     }
 

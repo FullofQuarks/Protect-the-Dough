@@ -35,6 +35,7 @@ import { CheckoutComponent } from '@app/components/checkout/checkout.component';
 import { Module as StripeModule } from 'stripe-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileMfaComponent } from './components/profile/profile-mfa/profile-mfa.component';
+import { CheckoutService } from '@common/services/checkout.service';
 
 @NgModule({
     declarations: [
@@ -80,7 +81,7 @@ import { ProfileMfaComponent } from './components/profile/profile-mfa/profile-mf
         ToastrModule.forRoot(),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
     ],
-    providers: [ProductEvents, UserEvents, AuthService, AuthGuard],
+    providers: [ProductEvents, UserEvents, AuthService, AuthGuard, CheckoutService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
