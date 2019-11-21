@@ -11,6 +11,7 @@ import { LoginComponent } from '@app/components/login/login.component';
 import { CartComponent } from '@app/components/cart/cart.component';
 import { CheckoutComponent } from '@app/components/checkout/checkout.component';
 import { ProfileMfaComponent } from './components/profile/profile-mfa/profile-mfa.component';
+import { ProfileSettingsComponent } from './components/profile/profile-settings/profile-settings.component';
 
 const appRoutes: Routes = [
     {
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
             { path: 'userinfo', component: UserInfoComponent, pathMatch: 'full' },
             { path: 'login', component: LoginComponent, pathMatch: 'full' },
             { path: 'checkout', component: CheckoutComponent, pathMatch: 'full' },
-            { path: 'mfa', component: ProfileMfaComponent, canActivate: [AuthGuard], pathMatch: 'full' }
+            { path: 'mfa', component: ProfileMfaComponent, canActivate: [AuthGuard], pathMatch: 'full' },
+            { path: 'settings', component: ProfileSettingsComponent, canActivate: [AuthGuard], pathMatch: 'full' }
         ]
     }
 ];

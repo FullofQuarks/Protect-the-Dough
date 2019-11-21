@@ -52,6 +52,47 @@
 		<div class="col-md-9">
 			<div class="profile-content">
 				<!-- Some user related content goes here... -->
+				<form>
+					<fieldset>
+						<legend>Account Settings</legend>
+						<div class="form-group">
+							<label for="inputName">Full Name</label>
+							<input type="text" class="form-control" id="inputName" placeholder="Full Name">
+						</div>
+						<div class="form-group">
+							<label for="inputEmail">Email Address</label>
+							<input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+						</div>
+						<div class="form-group">
+							<label for="inputPassword">Password</label>
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<label for="inputPassword2">Re-enter Password</label>
+							<input type="password" class="form-control" id="inputPassword2" placeholder="Re-enter Password">
+						</div>
+						<div class="form-group">
+							<label for="inputPhoneNumber">Phone Number</label>
+							<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
+						</div>
+						<div class="form-group">
+							<label for="inputAddress">Address</label>
+							<input type="text" class="form-control" id="inputAddress" placeholder="Address">
+						</div>
+						<div class="form-group">
+							<label for="inputCty">City</label>
+							<input type="text" class="form-control" id="inputCty" placeholder="City">
+						</div>
+						<div class="form-group">
+							<label for="inputState">State</label>
+							<input type="text" class="form-control" id="inputState" placeholder="State">
+						</div><div class="form-group">
+							<label for="inputZipCode">Zip Code</label>
+							<input type="text" class="form-control" id="inputZipCode" placeholder="Zip Code">
+						</div>
+						<button type="submit" class="btn btn-primary" (click)="Save()">Save</button>
+					</fieldset>
+				</form>
 			</div>
 		</div>
 	</div>

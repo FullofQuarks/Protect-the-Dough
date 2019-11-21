@@ -35,6 +35,7 @@ import { CheckoutComponent } from '@app/components/checkout/checkout.component';
 import { Module as StripeModule } from 'stripe-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileMfaComponent } from './components/profile/profile-mfa/profile-mfa.component';
+import { ProfileSettingsComponent } from './components/profile/profile-settings/profile-settings.component';
 import { CheckoutService } from '@common/services/checkout.service';
 
 @NgModule({
@@ -52,7 +53,8 @@ import { CheckoutService } from '@common/services/checkout.service';
         UserInfoComponent,
         ProfileComponent,
         LoginComponent,
-        ProfileMfaComponent
+        ProfileMfaComponent,
+        ProfileSettingsComponent
     ],
     imports: [
         BrowserAnimationsModule,
